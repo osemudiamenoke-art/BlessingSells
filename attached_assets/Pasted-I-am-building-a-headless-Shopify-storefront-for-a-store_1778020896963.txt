@@ -1,0 +1,177 @@
+I am building a headless Shopify storefront for a store called BlessingSells (blessingsells.com). The store is already live on Shopify — I am NOT migrating it, just building a custom Next.js frontend that connects to the existing Shopify backend via the Storefront API. I need you to help me implement only the backend data layer and API integration.
+
+---
+
+STORE OVERVIEW
+--------------
+Store name: BlessingSells
+Shopify store URL: blessingsells.com (myshopify domain: blessingsells.myshopify.com)
+Storefront API public token: [483f9e9b17e4d6ebd6ea1052881b0a8e]
+Storefront API private token: [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 — keep server-side only]
+API version: 2024-01 (use latest stable)
+
+Store categories (collections to map):
+- E-Bikes & Scooters
+- Men's Wallets
+- Toilet & Bath
+- Pets
+- Home Appliances
+- Smart Cameras & Door Locks
+- Accessories
+
+Store policies (already written — expose via API or static pages):
+- Shipping Policy
+- Terms of Service
+- Refund Policy (30-day returns)
+- Privacy Policy
+- FAQ
+
+Contact info:
+- Email: blessingsells@gmail.com
+- Phone: +1 (217) 695-4009
+- Address: 824 N 7th Street, Quincy, IL 62301
+
+Payment methods accepted (display in footer/checkout):
+- Visa, Mastercard, Amex, Discover, Diners Club
+- PayPal, Apple Pay, Google Pay, Amazon Pay, Shop Pay
+
+---
+
+TECH STACK
+----------
+- Framework: Next.js 14 with App Router
+- Language: TypeScript
+- API: Shopify Storefront API (GraphQL)
+- HTTP: native fetch with Next.js caching
+- State management: React Context or Zustand (for cart)
+- Env vars: store in .env.local
+
+---
+
+STOREFRONT API PERMISSIONS ALREADY ENABLED
+-------------------------------------------
+- unauthenticated_read_product_listings
+- unauthenticated_read_product_tags
+- unauthenticated_read_product_pickup_locations
+- unauthenticated_read_customers
+- unauthenticated_write_customers
+- unauthenticated_read_content
+- unauthenticated_read_checkouts
+- unauthenticated_write_checkouts
+- unauthenticated_read_selling_plans
+- unauthenticated_read_metaobjects
+
+---
+
+WHAT I NEED BUILT
+-----------------
+Please implement the following, in this order:
+
+1. PROJECT SETUP
+   - /lib/shopify.ts — Shopify client using fetch + GraphQL
+   - Environment variable types in env.d.ts
+   - Base GraphQL query/mutation helper with error handling
+   - Types file: /types/shopify.ts covering Product, Collection, Cart, CartLine, Image, Variant, etc.
+
+2. COLLECTIONS / CATEGORIES
+   - GraphQL query: fetch all collections with handle, title, image, description
+   - GraphQL query: fetch products by collection handle (paginated, 20 per page)
+   - Next.js route: /app/collections/[handle]/page.tsx
+   - Map the 7 store categories to their Shopify collection handles
+
+3. PRODUCT DATA
+   - GraphQL query: fetch single product by handle — title, description, images, variants (size/color), price, compareAtPrice, tags, vendor, availableForSale
+   - GraphQL query: fetch related products (by collection or tag)
+   - Next.js route: /app/products/[handle]/page.tsx
+   - Metadata generation for SEO (title, description, og:image)
+
+4. HOMEPAGE DATA
+   - GraphQL query: fetch featured collection (3–4 collections for category grid)
+   - GraphQL query: fetch newest products (first: 8, sortKey: CREATED_AT)
+   - GraphQL query: fetch best sellers (sortKey: BEST_SELLING, first: 8)
+   - Export these as server-side data fetchers for the homepage
+
+5. SEARCH
+   - GraphQL query: search products by query string (title, tags, vendor)
+   - Next.js route: /app/search/page.tsx with ?q= param support
+   - Return: product handle, title, image, price, availableForSale
+
+6. CART (CLIENT-SIDE)
+   - GraphQL mutations: cartCreate, cartLinesAdd, cartLinesUpdate, cartLinesRemove, cartQuery
+   - Cart context provider: /context/CartContext.tsx
+   - Cart stored in localStorage with cartId, auto-retrieved on mount
+   - Expose: cart items, total quantity, subtotal, addItem, removeItem, updateQuantity, clearCart
+   - Checkout redirect: use cart.checkoutUrl to redirect to Shopify-hosted checkout
+
+7. STATIC POLICY PAGES
+   - GraphQL query: fetch shop policies (shippingPolicy, refundPolicy, privacyPolicy, termsOfService) using the Storefront API shop query
+   - Next.js routes: /app/policies/[policy]/page.tsx
+   - Also create a static /app/faq/page.tsx with the FAQ content already written
+
+8. STORE INFO
+   - GraphQL query: fetch shop name, description, primaryDomain, moneyFormat
+   - Use for footer, meta tags, and currency formatting across the site
+
+9. PRODUCT FILTERING & SORTING (on collection pages)
+   - Support sortKey param: PRICE, TITLE, CREATED_AT, BEST_SELLING
+   - Support reverse param for ascending/descending
+   - Support filter by available (availableForSale: true)
+   - Implement as server-side URL search params, no client-side JS required
+
+10. REVALIDATION STRATEGY
+    - Product pages: revalidate every 60 seconds (ISR)
+    - Collection pages: revalidate every 300 seconds
+    - Homepage: revalidate every 120 seconds
+    - Use Next.js fetch cache options, not route-level revalidate
+
+---
+
+FILE STRUCTURE TO GENERATE
+---------------------------
+/lib
+  shopify.ts          ← Shopify fetch client
+  queries/
+    products.ts       ← All product-related GraphQL queries
+    collections.ts    ← All collection queries
+    cart.ts           ← Cart mutations and queries
+    shop.ts           ← Shop info + policies
+  utils/
+    formatPrice.ts    ← Currency formatter using store's moneyFormat
+    parseShopifyId.ts ← Decode base64 Shopify GIDs
+
+/types
+  shopify.ts          ← All TypeScript interfaces
+
+/context
+  CartContext.tsx     ← Cart state + mutations
+
+/app
+  page.tsx            ← Homepage (data fetching only, no UI)
+  collections/[handle]/page.tsx
+  products/[handle]/page.tsx
+  search/page.tsx
+  policies/[policy]/page.tsx
+  faq/page.tsx
+
+/.env.local (example)
+  SHOPIFY_STORE_DOMAIN=blessingsells.myshopify.com
+  SHOPIFY_STOREFRONT_ACCESS_TOKEN=your_public_token
+  SHOPIFY_PRIVATE_ACCESS_TOKEN=your_private_token
+
+---
+
+CONSTRAINTS & NOTES
+--------------------
+- All server-side data fetching must use Next.js App Router conventions (async server components, fetch with cache options).
+- Cart operations must be client-side ("use client") since they modify state.
+- Never expose the private access token client-side — only use it in server-side API routes if needed.
+- Format all prices using the store's moneyFormat from the shop query, not hardcoded "$".
+- Handle out-of-stock variants gracefully — expose availableForSale on every variant and product.
+- Shopify returns IDs as base64 encoded GIDs (e.g. gid://shopify/Product/123) — create a utility to parse these where needed.
+- All queries should request pageInfo (hasNextPage, endCursor) for pagination support.
+
+---
+
+DELIVERABLE
+-----------
+Generate all files listed above with full working code. Start with /lib/shopify.ts and /types/shopify.ts, then proceed in order through the list. Add brief inline comments only where the logic is non-obvious.

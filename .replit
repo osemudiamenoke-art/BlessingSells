@@ -18,3 +18,21 @@ expertMode = true
 [postMerge]
 path = "scripts/post-merge.sh"
 timeoutMs = 20000
+
+[userenv]
+
+[userenv.shared]
+VITE_SHOPIFY_STORE_DOMAIN = "blessingsells.myshopify.com"
+VITE_SHOPIFY_STOREFRONT_ACCESS_TOKEN = "483f9e9b17e4d6ebd6ea1052881b0a8e"
+VITE_SHOPIFY_API_VERSION = "2024-01"
+SHOPIFY_STORE_DOMAIN = "blessingsells.myshopify.com"
+SHOPIFY_STOREFRONT_ACCESS_TOKEN = "483f9e9b17e4d6ebd6ea1052881b0a8e"
+SHOPIFY_API_VERSION = "2024-01"
+
+[[ports]]
+localPort = 8080
+externalPort = 8080
+
+[[ports]]
+localPort = 18539
+externalPort = 80

@@ -1,0 +1,302 @@
+COLOR PALETTE
+Page bg (warm cream)
+Surface / card bg
+Footer bg (olive-dark)
+Primary text (dark charcoal)
+Secondary text (warm gray)
+Brand accent (terracotta-red)
+Divider / border
+Card & drawer white
+- Page background: warm cream #F5F2EC — never pure white
+- Product card background: slightly cooler cream #EDEAE2
+- Brand accent color: muted terracotta-red #B75C47 — used ONLY for:
+    primary CTA buttons, "Add to Cart", checkout button,
+    hover underlines on brand names, progress bar in cart
+- Footer background: deep olive-green #4A5240 — high contrast against cream body
+- All borders: 1px solid warm gray #D4C9B8 — soft, never harsh
+- No pure black anywhere. Darkest text is charcoal #2C2C28
+- Zero blues, purples, or bright colors — palette is entirely earth-toned
+TYPOGRAPHY
+LOGO:
+- Wordmark only: "ELEVARE" in wide-tracked uppercase
+- Font: a clean geometric sans (similar to Futura or Jost)
+- A small dot sits below the "E" — minimalist brand mark
+- Color: dark charcoal #2C2C28 on light bg; cream on dark bg (footer)
+
+HEADINGS / DISPLAY TEXT:
+- Font: an editorial serif — closely resembles "Cormorant Garamond" or "Freight Display"
+- Used for: section titles, hero headline, footer tagline
+- Key behavior: mixed serif + sans within same headline
+  Example: "The Spring [Renewal]" — "The Spring" in sans, "Renewal" in italic serif
+  Example: "The [Elevare] Standard" — "Elevare" switches to italic serif inline
+  Example: footer tagline "[Thrive] With Us" — "Thrive" in italic serif script weight
+- This mixed-weight, mixed-style headline treatment is the #1 signature of this design
+- Heading sizes: hero ~48–56px, section titles ~32–38px, product page FAQ ~36px
+- Font weight for serif: 400 italic only — never bold serif
+
+BODY TEXT:
+- Font: a humanist sans-serif — similar to "DM Sans" or "Neue Haas Grotesk"
+- Weight: 300 (light) for paragraphs, 400 for UI labels, 500 for prices and CTAs
+- Size: 14px body, 12px captions, 11px meta text
+- Line-height: 1.7 for paragraphs, 1.4 for compact UI
+
+NAVIGATION LINKS:
+- Font: same sans, weight 400
+- Size: 14px
+- Case: Title Case (not uppercase, not all-caps)
+- Color: charcoal #2C2C28, no underline
+- Dropdown arrows: small chevron SVG inline
+
+BRAND NAME LABELS (above product title on cards):
+- ALL CAPS, letter-spacing: 0.12em, font-size: 10–11px
+- Color: terracotta accent #B75C47
+- This is a critical detail — brand appears above product name in accent color
+
+PRICES:
+- Font-size: 16px, weight: 500
+- Format: "QAR 32,00" — note comma decimal separator (adapt to "$32.00" for USD)
+- No strikethrough on sale — compare price shown subtly in muted gray beside it
+
+BUTTONS:
+- Primary CTA: ALL CAPS text, letter-spacing: 0.15em, weight 500, font-size: 13px
+  Background: terracotta #B75C47, text: white, border-radius: 2–4px (nearly square)
+- Secondary/outline CTA: same text style, transparent bg, 1px border terracotta, text terracotta
+- "VIEW SIMILAR PRODUCTS": outline style, full width
+- Quantity stepper: thin border box with − and + as text characters, number centered
+HEADER & NAVIGATION
+ANNOUNCEMENT BAR (topmost):
+- Background: deep olive-green #4A5240 (same as footer)
+- Text: cream/white, font-size: 11px, weight 400, letter-spacing: 0.08em
+- Content: scrolling marquee — "Scheduled Delivery · Premium Products · Delivery Across Qatar · Exclusive Brands"
+- The bullet separator · is used between items (not | or —)
+- Infinite loop, smooth CSS animation, no pause on hover
+- Height: ~32px
+
+MAIN HEADER BAR:
+- Background: warm cream #F5F2EC — matches page bg seamlessly (no visible seam)
+- Height: ~64px
+- Layout: Logo LEFT | Search bar CENTER | [About · Arabic · Wishlist · Account · Cart] RIGHT
+- Logo: "ELEVARE" wordmark with dot beneath, ~22px height
+- Search bar: pill-shaped input, full border 1px #D4C9B8, placeholder "Search", search icon right
+  Width: ~340px, centered in header
+- Right icons: text "About" link, Arabic toggle text, then heart icon, person icon, cart icon
+- Cart icon: has a circular badge counter top-right (dark bg, white text)
+- All icons: thin-stroke SVG, ~20px, charcoal color
+
+SECONDARY NAV BAR:
+- Sits directly below main header, same cream background
+- Single row of category links: "Groceries ↓  Health & Beauty ↓  Home & Garden ↓  Accessories ↓  Our Brands"
+- Font: 14px, weight 400, charcoal, Title Case
+- Hover: subtle underline in terracotta
+- Dropdown arrows: small chevron
+- Padding: 12px vertical, generous horizontal spacing
+- A very thin 1px border-bottom separates it from page content
+
+BREADCRUMB (on inner pages):
+- Appears below secondary nav on collection/product pages
+- Format: "Home / Groceries / Snacks / Product Name"
+- Font: 12px, muted gray, with "/" separators
+- Active page: charcoal, slightly bolder
+HOMEPAGE LAYOUT — SECTION BY SECTION
+1. HERO SECTION:
+- Full-width image, ~480px tall on desktop
+- Lifestyle photography — warm, earthy, food/home focused
+- Text overlay bottom-left: small eyebrow tag in cream, then large mixed serif/sans headline
+- CTA button: dark charcoal bg with cream text "DISCOVER MORE →" — outline pill style
+- Subtle dot pagination (circles) bottom-right for slide indicator
+- No harsh overlays — image slightly darkened at edges naturally
+
+2. BRAND STANDARDS STRIP ("The Elevare Standard"):
+- Background: white #FFFFFF — first element with pure white bg, creates contrast with cream
+- Layout: Left side — section title using mixed serif treatment
+  Right side — 4 equally spaced icon + label + description columns
+- Icons: thin-line SVG illustrations, ~40px, charcoal
+- Labels: 13px, weight 500, charcoal
+- Descriptions: 12px, muted gray, 2–3 lines max
+- No borders between columns — whitespace is the separator
+
+3. PRODUCT COLLECTION ROWS ("Elevare Exclusives", "Featured Products"):
+- Section title: LEFT aligned, mixed serif headline + sans subtitle below in muted gray
+- Below title: a terracotta-colored "SHOP THE COLLECTION →" button (outline style, pill border)
+- Left side: title + button stacked vertically (~220px wide column)
+- Right side: horizontal scrolling product card row
+- Navigation: small circular prev/next arrows below left column (not on the card row)
+- Cards: see Product Card spec below
+
+4. EDITORIAL TRIO ("Elevare Favourites"):
+- 3 large image tiles side by side, equal width
+- Each: lifestyle photo ~300px tall, category label below in sans, short description, "Shop The Collection" link in small underlined text
+- No card borders — images sit directly with white space between
+
+5. FULL-WIDTH CATEGORY BANNER ("Happy House"):
+- Title and "SHOP NOW →" button top-right
+- Below: full-width cream/white background with large product lifestyle photo
+- Products arranged artfully as a flat-lay or styled scene — not grid
+
+6. PARTNER LOGOS ("Our Partners"):
+- Centered section title in sans
+- Single row of partner/brand logos in grayscale
+- Generous spacing, no borders
+
+7. JOURNAL / BLOG ROW:
+- Section title: "Elevare Journal" in mixed serif treatment
+- 4-column grid of blog cards
+- Each card: photo top, small date/category tag, headline in sans weight 500, excerpt in muted 13px, "READ MORE" link in uppercase tracking
+- Cards have NO borders — clean separation by whitespace only
+PRODUCT CARDS (grid items)
+CARD STRUCTURE (top to bottom):
+1. Image area: square aspect ratio, background #EDEAE2 (warm cream), no border
+   - Product image centered, generous padding inside
+   - Top-right: heart/wishlist icon (thin SVG, appears on hover)
+   - No sale badges, no clutter overlays
+2. Brand name: ALL CAPS, 10px, terracotta #B75C47, letter-spacing 0.1em
+   (e.g. "BOULDER CANYON" or "HU CHOCOLATE")
+3. Product name: 13–14px, weight 400, charcoal, 2-line clamp
+4. Price: 14px, weight 500, charcoal ("QAR 32,00")
+5. "ADD TO CART" button: full-width, terracotta bg, white ALL CAPS text
+   OR "COMING SOON" if unavailable: outline style, muted gray text
+   Height: 40px, border-radius: 2–3px
+
+CARD SPACING:
+- Gap between cards: 16–20px
+- No box shadow on cards
+- No border on cards — they float on the cream background
+- Grid: 4 columns desktop, 2 columns mobile
+
+HOVER STATE:
+- Subtle background darkening on image area
+- Heart icon appears (fade in)
+- No image swap on this site — single image stays
+PRODUCT DETAIL PAGE
+LAYOUT: 2-column, 50/50 split
+LEFT COLUMN — Image gallery:
+- Main image: large, cream bg #EDEAE2, ~500px tall, product centered with padding
+- Thumbnails: horizontal row below, small squares with 1px border, active has terracotta border
+- No zoom effect visible — clean static image
+
+RIGHT COLUMN — Product info:
+- Breadcrumb at top: "Home / Groceries / Snacks / Product Name"
+- Product title: 24–28px, weight 500, charcoal, line-height 1.3
+- Brand link: 12px, ALL CAPS, terracotta, underlined — "by BOULDER CANYON"
+- Price: 22px, weight 500 — "QAR 32,00"
+- Wishlist heart icon top-right of the title area
+
+QUANTITY + ADD TO CART ROW:
+- Quantity stepper: [ − ] [ 2 ] [ + ] — thin border box, 40px tall, numbers in center
+- "ADD TO CART" button: full-width or flex-fill, terracotta bg, white ALL CAPS, 48px tall
+- Below: "VIEW SIMILAR PRODUCTS" — full-width outline button, same height
+
+STOCK STATUS:
+- Small green dot + "In stock and ready to ship" — 12px muted text, inline
+
+PRODUCT ATTRIBUTES / HIGHLIGHTS BOX:
+- Light cream bg box with 1px border below the cart buttons
+- 3 columns of icon + label + description
+- Icons: thin-line SVG ~32px
+- e.g. "Source Of Healthy Oils / Contains healthy fats"
+
+ACCORDION SECTIONS (below attributes):
+- "Description", "Ingredients", "Elevare Standard"
+- Each: full-width row, 1px bottom border, title left, + icon right
+- Expand to reveal content — smooth height animation
+- Font: 14px, weight 400
+
+FAQ SECTION (below fold on product page):
+- Section title: "Frequently [Asked] Questions" — mixed serif italic on "Asked"
+- Listed as accordion rows same style as above
+- Topics: How to place an order, Payment, Tracking, Delivery, Returns, Contact
+
+BRAND STANDARD STRIP:
+- Repeated at bottom of product page (same as homepage strip)
+- White background, 4-column icon grid
+CART DRAWER
+TRIGGER: clicking cart icon opens right-side drawer — page is NOT redirected
+
+DRAWER LAYOUT:
+- Slides in from right, ~420px wide
+- Background: white #FFFFFF
+- Header: "Your Cart (2)" — left, 20px weight 500 | X close button right
+- Thin 1px separator below header
+
+MINIMUM ORDER PROGRESS BAR:
+- Text: "Add QAR 58,00 more to reach the minimum order of QAR 200,00"
+- Below: full-width progress bar, terracotta fill #B75C47, remaining in light gray
+- Font: 12px, muted gray
+- This is a conversion nudge element — important to include
+
+CART LINE ITEMS:
+- Each item: horizontal card with 1px border, border-radius ~8px
+- Left: product thumbnail in cream bg square ~80px
+- Right: brand name ALL CAPS terracotta (10px), product name (14px charcoal),
+  price below in weight 500
+- Bottom of card: [ − ] [ qty ] [ + ] stepper LEFT, trash icon RIGHT
+- Stepper: same style as product page, thin border
+
+DELIVERY DATE PICKER (unique feature — adapt for BlessingSells):
+- Section below cart items with cream bg (#F5F2EC)
+- Title: "Pick a Delivery Date" centered, weight 500
+- Date input: full-width, 1px border, calendar icon RIGHT (terracotta color)
+- Time slot selector: full-width, 1px border, clock icon RIGHT (terracotta)
+- Helper text: 12px muted gray centered
+
+SUBTOTAL SECTION:
+- "Subtotal" LEFT, price RIGHT — both 16px weight 500
+- Helper text: "Taxes, discounts and shipping calculated at checkout." — 12px muted
+- Terms checkbox: small checkbox + underlined link text
+- CHECKOUT button: full-width, 52px tall, terracotta bg, white ALL CAPS "CHECKOUT →"
+  Arrow → included inline in button label
+FOOTER
+BACKGROUND: deep olive-green #4A5240 — same as announcement bar
+
+LAYOUT: 2 rows
+TOP ROW (email signup + links):
+- Left column (~280px): 
+  Tagline: "Thrive With Us" — "Thrive" in italic editorial serif (cream color), "With Us" in sans
+  Email input below: full-width pill input with → submit arrow button (terracotta icon)
+  Input: dark border on olive bg, cream placeholder text
+- Middle columns: "Discover" + "Customer Support" — each a link list
+  Column title: 13px, weight 500, cream
+  Links: 13px, weight 300, muted cream/gray
+- Right column: "Explore" — same structure
+
+BOTTOM ROW:
+- Social icons: Instagram, LinkedIn, WhatsApp — thin-stroke SVG, cream color, ~20px
+- Legal links row: "Terms & Conditions · Privacy Policy · Cookie Policy" — 11px muted, underlined
+- Copyright: "© 2026 Website by WIRO | Shopify Plus Agency" — 11px, most muted
+- Payment logos: Visa, Mastercard, Amex, NAPS, MyFatoorah — white/light treatment on dark bg
+  Displayed as small rectangular logo images in a row
+MICRO-INTERACTIONS & MOTION
+- Cart drawer: slides in from right with ease-out timing (~250ms)
+- Accordion expand: smooth max-height transition (~200ms)
+- Marquee: continuous CSS scroll, no pause, seamless loop
+- Scroll reveal: sections fade in + slight translateY(20px) as they enter viewport
+- Button hover: slight opacity reduction (0.85) on terracotta buttons
+- Product image hover: very subtle scale(1.02) on image only, not card
+- No jarring transitions, no bounce, no spring physics
+- Wishlist heart: fills with terracotta on click (toggle state)
+- Progress bar in cart: smooth width transition when items added
+KEY DESIGN PRINCIPLES TO REPLICATE
+1. MIXED TYPOGRAPHY HEADLINES — the single most recognizable feature.
+   Every major section title mixes italic serif with upright sans in the same line.
+   This is not optional — it defines the brand voice visually.
+
+2. TERRACOTTA AS THE ONLY ACCENT — one color does all the work:
+   CTAs, brand labels, progress bars, icon accents, active states.
+   Everything else is neutral earth tones.
+
+3. CREAM BACKGROUND, NOT WHITE — the warm #F5F2EC base makes
+   every element feel editorial and premium, not clinical.
+
+4. BRAND NAME ABOVE PRODUCT NAME — in ALL CAPS terracotta.
+   This is Elevare's card signature. Replicate exactly for BlessingSells.
+
+5. OLIVE FOOTER = ANNOUNCEMENT BAR — same color bookends the page.
+   Creates a visual frame — the page feels contained and intentional.
+
+6. FLAT CARDS, NO SHADOW — product cards have zero elevation.
+   They live on the page, not above it.
+
+7. NEARLY-SQUARE BUTTONS — border-radius: 3–4px only.
+   Not pill-shaped, not fully square. Just barely rounded.
+
+8. CART IS A DRAWER, NOT A PAGE — slides from right, never navigates away.
