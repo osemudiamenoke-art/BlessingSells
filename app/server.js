@@ -6,6 +6,10 @@ import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
 
+// Load .env file in development
+const { config } = await import("dotenv").catch(() => ({ config: () => {} }));
+if (typeof config === "function") config();
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const isProd = process.env.NODE_ENV === "production";
 
@@ -13,13 +17,14 @@ const isProd = process.env.NODE_ENV === "production";
 // Uses the PRIVATE token server-side (never exposed to browser)
 // IMPORTANT: Use the .myshopify.com internal domain — NOT the custom domain (blessingsells.com).
 // Your store handle from admin.shopify.com/store/blessingelectronic is "blessingelectronic".
-const SHOPIFY_DOMAIN =
-  process.env.SHOPIFY_STORE_DOMAIN || "blessingelectronic.myshopify.com";
-const SHOPIFY_TOKEN =
-  process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN ||
-  "483f9e9b17e4d6ebd6ea1052881b0a8e"; // public Storefront API token (from Headless channel)
-const SHOPIFY_API_VERSION =
-  process.env.SHOPIFY_API_VERSION || "2026-04";
+const SHOPIFY_DOMAIN = process.env.SHOPIFY_STORE_DOMAIN;
+const SHOPIFY_TOKEN = process.env.SHOPIFY_STOREFRONT_ACCESS_TOKEN;
+const SHOPIFY_API_VERSION = process.env.SHOPIFY_API_VERSION || "2026-04";
+
+if (!SHOPIFY_DOMAIN || !SHOPIFY_TOKEN) {
+  console.error("❌  Missing required env vars: SHOPIFY_STORE_DOMAIN and SHOPIFY_STOREFRONT_ACCESS_TOKEN");
+  process.exit(1);
+}
 
 // ─── App setup ────────────────────────────────────────────────────────────────
 const app = express();
