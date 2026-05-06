@@ -1,387 +1,193 @@
 import { Link } from "wouter";
 import { MixedHeading } from "@/components/ui/MixedHeading";
-import { ProductGrid } from "@/components/ui/ProductGrid";
+import { ProductCard } from "@/components/ui/ProductCard";
 import { Skeleton } from "@/components/ui/Skeleton";
-import { useFeaturedCollections, useNewestProducts } from "@/hooks/useShopify";
-import { Truck, ShieldCheck, Lock, Award, ArrowLeft, ArrowRight } from "lucide-react";
-import { useState } from "react";
+import { useCollectionProducts } from "@/hooks/useShopify";
+import type { Product } from "@/types/shopify";
 
-export default function HomePage() {
-  const { data: collections, isLoading: loadingCollections } = useFeaturedCollections();
-  const { data: newestProducts, isLoading: loadingProducts } = useNewestProducts(8);
-  const [collectionIndex, setCollectionIndex] = useState(0);
+const CATEGORIES = [
+  { label: "E-Bikes & Scooters",          handle: "electronic-bike",         img: "https://images.unsplash.com/photo-1571188654248-7a89213915f7?q=80&w=800&auto=format&fit=crop" },
+  { label: "Men's Wallets",               handle: "advance-wallets",          img: "https://images.unsplash.com/photo-1627123424574-724758594e93?q=80&w=800&auto=format&fit=crop" },
+  { label: "Toilet & Bath",              handle: "toilet-bath",              img: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?q=80&w=800&auto=format&fit=crop" },
+  { label: "Pets",                        handle: "pet-collection",           img: "https://images.unsplash.com/photo-1587300003388-59208cc962cb?q=80&w=800&auto=format&fit=crop" },
+  { label: "Home Appliances",            handle: "home-appliance",           img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" },
+  { label: "Smart Cameras & Door Locks", handle: "smart-security-camera",    img: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800&auto=format&fit=crop" },
+  { label: "Accessories",                handle: "cell-phones-accessories",  img: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800&auto=format&fit=crop" },
+];
+
+// ── View All placeholder — matches ProductCard size exactly ───────
+function ViewAllCard({ handle, label, img }: { handle: string; label: string; img: string }) {
+  return (
+    <Link href={`/collections/${handle}`} style={{ textDecoration: "none", display: "block" }}>
+      {/* Outer wrapper matches ProductCard: rounded-16 card bg with 12px padding */}
+      <div style={{
+        background: "var(--card)",
+        borderRadius: 16,
+        overflow: "hidden",
+        padding: 12,
+        border: "1.5px dashed var(--border)",
+        transition: "box-shadow 0.2s",
+        cursor: "pointer",
+      }} className="view-all-card">
+        {/* Image area — matches ProductCard's 1:1 image container */}
+        <div style={{
+          position: "relative",
+          borderRadius: 12,
+          overflow: "hidden",
+          aspectRatio: "1/1",
+          marginBottom: 12,
+          background: "#f0ede8",
+        }}>
+          {/* Blurred background image — less opacity so image shows through */}
+          <img
+            src={img}
+            alt={label}
+            style={{
+              position: "absolute", inset: 0,
+              width: "100%", height: "100%",
+              objectFit: "cover",
+              opacity: 0.35,
+              filter: "blur(1.5px)",
+            }}
+          />
+          {/* Overlay text centred */}
+          <div style={{
+            position: "absolute", inset: 0,
+            display: "flex", flexDirection: "column",
+            alignItems: "center", justifyContent: "center",
+            gap: 8,
+          }}>
+            <span style={{
+              fontSize: 32, lineHeight: 1,
+              color: "var(--foreground)",
+              filter: "drop-shadow(0 1px 2px rgba(255,255,255,0.6))",
+            }}>→</span>
+            <span style={{
+              fontSize: 12, fontWeight: 700,
+              letterSpacing: "0.12em", textTransform: "uppercase",
+              color: "var(--foreground)",
+              textShadow: "0 1px 4px rgba(255,255,255,0.7)",
+            }}>
+              View All
+            </span>
+          </div>
+        </div>
+
+        {/* Info area — matches ProductCard layout */}
+        <div style={{ padding: "0 4px" }}>
+          <div style={{ fontSize: 10, letterSpacing: "0.12em", color: "var(--primary)", textTransform: "uppercase", fontWeight: 500, marginBottom: 4 }}>
+            Collection
+          </div>
+          <p style={{ fontSize: 13, lineHeight: 1.4, fontWeight: 400, color: "var(--foreground)", margin: "0 0 8px" }}>
+            {label}
+          </p>
+          <div style={{
+            height: 40, borderRadius: 9999,
+            border: "1.5px solid var(--foreground)",
+            display: "flex", alignItems: "center", justifyContent: "center",
+            fontSize: 11, fontWeight: 600, letterSpacing: "0.14em",
+            textTransform: "uppercase", color: "var(--foreground)",
+            transition: "background 0.2s, color 0.2s",
+          }} className="view-all-inner-btn">
+            See All Products
+          </div>
+        </div>
+      </div>
+    </Link>
+  );
+}
+
+// ── One collection strip ──────────────────────────────────────────
+function CollectionStrip({ label, handle, img }: { label: string; handle: string; img: string }) {
+  const { data: products, isLoading } = useCollectionProducts(handle, 3, "BEST_SELLING");
 
   return (
-    <div className="w-full">
-      {/* Hero */}
-      <section
-        className="relative w-full flex items-center overflow-hidden"
-        style={{ height: "500px", background: "#E8E1D5" }}
-      >
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1618220179428-22790b46a0eb?q=80&w=2000&auto=format&fit=crop')",
-            opacity: 0.4,
-            mixBlendMode: "multiply",
-          }}
-        />
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="max-w-[480px]">
-            <span
-              className="text-xs font-medium tracking-[0.15em] uppercase mb-4 block"
-              style={{ color: "var(--primary)" }}
-            >
-              New Arrivals
-            </span>
-            <MixedHeading className="text-[40px] md:text-[56px] leading-[1.1] mb-6">
-              Discover the{" "}
-              <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>
-                Best Deals
-              </em>
-            </MixedHeading>
-            <p
-              className="text-[14px] md:text-[15px] mb-8 max-w-[380px] leading-[1.6]"
-              style={{ color: "var(--muted-foreground)" }}
-            >
-              Curated essentials for your home, daily commute, and lifestyle.
-              Quality you can trust.
-            </p>
-            <Link
-              href="/collections/advance-wallets"
-              className="inline-flex items-center justify-center h-12 px-8 text-[13px] font-medium tracking-[0.15em] uppercase rounded-full transition-opacity hover:opacity-90"
-              style={{
-                background: "var(--foreground)",
-                color: "var(--background)",
-              }}
-            >
-              Discover More →
-            </Link>
-          </div>
+    <section style={{ padding: "40px 0", borderBottom: "1px solid var(--border)" }}>
+      <div style={{ maxWidth: 1400, margin: "0 auto", padding: "0 1rem" }}>
+        {/* Section header */}
+        <div style={{ display: "flex", alignItems: "flex-end", justifyContent: "space-between", marginBottom: "1.5rem", gap: 12, flexWrap: "wrap" }}>
+          <MixedHeading className="text-[22px] md:text-[28px]">
+            {label.split(" ").slice(0, -1).join(" ")}{" "}
+            <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>
+              {label.split(" ").slice(-1)}
+            </em>
+          </MixedHeading>
+          <Link
+            href={`/collections/${handle}`}
+            style={{
+              fontSize: 11, fontWeight: 600, letterSpacing: "0.12em",
+              textTransform: "uppercase", color: "var(--foreground)",
+              borderBottom: "1.5px solid var(--foreground)", paddingBottom: 2,
+              textDecoration: "none", whiteSpace: "nowrap",
+              transition: "opacity 0.15s",
+            }}
+          >
+            View All →
+          </Link>
         </div>
-      </section>
 
-      {/* Brand Standards */}
-      <section
-        className="py-12 md:py-16"
-        style={{
-          background: "#fff",
-          borderBottom: "1px solid var(--border)",
-        }}
-      >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row gap-10 lg:gap-16 items-start lg:items-center">
-            <div className="lg:w-1/3">
-              <MixedHeading className="text-[28px] md:text-[32px]">
-                The{" "}
-                <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>
-                  BlessingSells
-                </em>{" "}
-                Promise
-              </MixedHeading>
-            </div>
-            <div className="lg:w-2/3 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 w-full">
-              {[
-                {
-                  Icon: Truck,
-                  title: "Free Shipping $50+",
-                  body: "On all domestic orders over fifty dollars.",
-                },
-                {
-                  Icon: ShieldCheck,
-                  title: "30-Day Returns",
-                  body: "Not completely satisfied? Return it easily.",
-                },
-                {
-                  Icon: Lock,
-                  title: "Secure Checkout",
-                  body: "Your payment information is always protected.",
-                },
-                {
-                  Icon: Award,
-                  title: "Premium Quality",
-                  body: "Carefully selected products built to last.",
-                },
-              ].map(({ Icon, title, body }) => (
-                <div key={title} className="space-y-3">
-                  <Icon
-                    className="w-6 h-6"
-                    strokeWidth={1.5}
-                    style={{ color: "var(--primary)" }}
-                  />
-                  <h4 className="text-[14px] font-medium">{title}</h4>
-                  <p
-                    className="text-[12px] leading-relaxed"
-                    style={{ color: "var(--muted-foreground)" }}
-                  >
-                    {body}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Collections carousel */}
-      <section
-        className="py-16 md:py-24 overflow-hidden"
-        style={{ borderBottom: "1px solid var(--border)" }}
-      >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="flex flex-col md:flex-row gap-12 md:gap-16">
-            <div className="md:w-[260px] flex-shrink-0 flex flex-col justify-between">
-              <div>
-                <MixedHeading className="text-[32px] md:text-[38px] mb-6">
-                  BlessingSells{" "}
-                  <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>
-                    Exclusives
-                  </em>
-                </MixedHeading>
-                <p
-                  className="text-sm mb-8"
-                  style={{ color: "var(--muted-foreground)" }}
-                >
-                  Browse our most popular categories.
-                </p>
-                <Link
-                  href="/collections/advance-wallets"
-                  className="inline-flex items-center justify-center h-10 px-6 text-[12px] font-medium tracking-[0.15em] uppercase transition-colors mb-12"
-                  style={{
-                    border: "1px solid var(--primary)",
-                    color: "var(--primary)",
-                    borderRadius: "3px",
-                  }}
-                >
-                  Shop All →
-                </Link>
+        {/* Products + View All card in a 2-col (mobile) / 4-col (desktop) grid — matching collection page */}
+        {isLoading ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {[1, 2, 3, 4].map((i) => (
+              <div key={i} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+                <Skeleton className="w-full" style={{ aspectRatio: "1/1", borderRadius: 16 }} />
+                <Skeleton className="h-3 w-1/3" />
+                <Skeleton className="h-4 w-3/4" />
               </div>
-              <div className="hidden md:flex gap-3">
-                <button
-                  onClick={() => setCollectionIndex((i) => Math.max(0, i - 1))}
-                  disabled={collectionIndex === 0}
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-colors disabled:opacity-30"
-                  style={{ border: "1px solid var(--border)" }}
-                >
-                  <ArrowLeft className="w-4 h-4" />
-                </button>
-                <button
-                  onClick={() =>
-                    setCollectionIndex((i) =>
-                      collections ? Math.min(collections.length - 1, i + 1) : i
-                    )
-                  }
-                  disabled={
-                    !collections || collectionIndex >= collections.length - 1
-                  }
-                  className="w-10 h-10 rounded-full flex items-center justify-center transition-colors disabled:opacity-30"
-                  style={{ border: "1px solid var(--border)" }}
-                >
-                  <ArrowRight className="w-4 h-4" />
-                </button>
-              </div>
-            </div>
-
-            <div className="flex-1 overflow-x-auto no-scrollbar pb-4 -mx-6 md:mx-0 px-6 md:px-0">
-              {loadingCollections ? (
-                <div className="flex gap-6">
-                  {[1, 2, 3].map((i) => (
-                    <div key={i} className="w-[280px] flex-shrink-0 space-y-4">
-                      <Skeleton className="w-full" style={{ aspectRatio: "4/5" }} />
-                      <Skeleton className="h-4 w-2/3" />
-                    </div>
-                  ))}
-                </div>
-              ) : collections ? (
-                <div
-                  className="flex gap-6 transition-transform duration-500 ease-out"
-                  style={{
-                    transform: `translateX(calc(-${collectionIndex * 100}% - ${collectionIndex * 24}px))`,
-                  }}
-                >
-                  {collections.map((col) => (
-                    <Link
-                      key={col.id}
-                      href={`/collections/${col.handle}`}
-                      className="w-[280px] md:w-[320px] flex-shrink-0 group"
-                    >
-                      <div
-                        className="w-full overflow-hidden mb-4"
-                        style={{
-                          aspectRatio: "4/5",
-                          background: "var(--card)",
-                          borderRadius: "2px",
-                        }}
-                      >
-                        {col.image ? (
-                          <img
-                            src={col.image.url}
-                            alt={col.image.altText || col.title}
-                            className="w-full h-full object-cover mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
-                          />
-                        ) : (
-                          <div
-                            className="w-full h-full flex items-center justify-center text-sm"
-                            style={{ color: "var(--muted-foreground)" }}
-                          >
-                            {col.title}
-                          </div>
-                        )}
-                      </div>
-                      <h3 className="text-lg font-medium">{col.title}</h3>
-                      <span
-                        className="text-[13px] mt-1 inline-block"
-                        style={{ color: "var(--muted-foreground)" }}
-                      >
-                        Explore Collection →
-                      </span>
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Editorial Trio */}
-      <section
-        className="py-16 md:py-24"
-        style={{ borderBottom: "1px solid var(--border)" }}
-      >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-            {[
-              {
-                href: "/collections/electronic-bike",
-                img: "https://images.unsplash.com/photo-1571188654248-7a89213915f7?q=80&w=800&auto=format&fit=crop",
-                title: "E-Bikes & Scooters",
-              },
-              {
-                href: "/collections/smart-security-camera",
-                img: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800&auto=format&fit=crop",
-                title: "Smart Security",
-              },
-              {
-                href: "/collections/home-appliance",
-                img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop",
-                title: "Home Appliances",
-              },
-            ].map(({ href, img, title }) => (
-              <Link key={href} href={href} className="group block">
-                <div
-                  className="mb-5 overflow-hidden"
-                  style={{ aspectRatio: "3/4", borderRadius: "2px", background: "var(--card)" }}
-                >
-                  <img
-                    src={img}
-                    alt={title}
-                    className="w-full h-full object-cover mix-blend-multiply transition-transform duration-700 group-hover:scale-105"
-                  />
-                </div>
-                <h3 className="text-[18px] font-medium mb-2">{title}</h3>
-                <span
-                  className="text-[13px] pb-0.5 transition-colors"
-                  style={{
-                    borderBottom: "1px solid var(--foreground)",
-                    color: "var(--foreground)",
-                  }}
-                >
-                  Shop The Collection
-                </span>
-              </Link>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Full-width CTA banner */}
-      <section className="relative w-full flex items-center overflow-hidden" style={{ height: "400px" }}>
-        <div className="absolute inset-0" style={{ background: "#4A5240", opacity: 0.95 }} />
-        <div
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage:
-              "url('https://images.unsplash.com/photo-1449247709967-d4461a6a6103?q=80&w=2000&auto=format&fit=crop')",
-            opacity: 0.25,
-            mixBlendMode: "multiply",
-          }}
-        />
-        <div className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 text-right">
-          <div className="max-w-[480px] ml-auto">
-            <span
-              className="text-xs font-medium tracking-[0.15em] uppercase mb-4 block"
-              style={{ color: "rgba(255,255,255,0.7)" }}
-            >
-              Curated Selection
-            </span>
-            <h2
-              className="text-[36px] md:text-[48px] leading-[1.1] mb-6 font-medium"
-              style={{ color: "#fff" }}
-            >
-              Elevate Your{" "}
-              <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>
-                Daily Life
-              </em>
-            </h2>
-            <Link
-              href="/collections/advance-wallets"
-              className="inline-flex items-center justify-center h-12 px-8 text-[13px] font-medium tracking-[0.15em] uppercase transition-opacity hover:opacity-90"
-              style={{
-                background: "#fff",
-                color: "var(--foreground)",
-                borderRadius: "3px",
-              }}
-            >
-              Shop Now →
-            </Link>
+        ) : products && products.length > 0 ? (
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {products.slice(0, 3).map((p: Product) => (
+              <ProductCard key={p.id} product={p} />
+            ))}
+            <ViewAllCard handle={handle} label={label} img={img} />
           </div>
+        ) : (
+          // Fallback — full-width View All if collection is empty
+          <ViewAllCard handle={handle} label={label} img={img} />
+        )}
+      </div>
+    </section>
+  );
+}
+
+// ── Main Page ─────────────────────────────────────────────────────
+export default function HomePage() {
+  return (
+    <div className="w-full">
+
+      {/* BlessingSells Exclusives header */}
+      <section style={{ padding: "48px 1rem 16px", maxWidth: 1400, margin: "0 auto" }}>
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 10 }}>
+          <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--primary)" }}>
+            Our Collections
+          </span>
+          <MixedHeading className="text-[32px] md:text-[44px]">
+            BlessingSells{" "}
+            <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>Exclusives</em>
+          </MixedHeading>
+          <p style={{ fontSize: 14, color: "var(--muted-foreground)", maxWidth: 460, lineHeight: 1.6, margin: 0 }}>
+            Browse our most popular categories — quality products curated for your everyday life.
+          </p>
         </div>
       </section>
 
-      {/* Newest Products */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-[1400px] mx-auto px-6 md:px-12">
-          <div className="text-center mb-12">
-            <MixedHeading className="text-[32px] md:text-[38px] mb-4">
-              Recently{" "}
-              <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>
-                Added
-              </em>
-            </MixedHeading>
-            <Link
-              href="/collections/advance-wallets"
-              className="text-sm transition-colors hover:opacity-70"
-              style={{ color: "var(--muted-foreground)" }}
-            >
-              View all products
-            </Link>
-          </div>
+      {/* Category strips */}
+      {CATEGORIES.map((cat) => (
+        <CollectionStrip key={cat.handle} {...cat} />
+      ))}
 
-          {loadingProducts ? (
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="space-y-3">
-                  <Skeleton className="w-full" style={{ aspectRatio: "1/1" }} />
-                  <Skeleton className="h-3 w-1/3" />
-                  <Skeleton className="h-4 w-3/4" />
-                  <Skeleton className="h-4 w-1/4" />
-                </div>
-              ))}
-            </div>
-          ) : newestProducts && newestProducts.length > 0 ? (
-            <ProductGrid products={newestProducts.slice(0, 4)} />
-          ) : (
-            <div
-              className="text-center py-12"
-              style={{ color: "var(--muted-foreground)" }}
-            >
-              No products available at the moment.
-            </div>
-          )}
-        </div>
-      </section>
+      <style>{`
+        .view-all-card:hover {
+          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .view-all-card:hover .view-all-inner-btn {
+          background: var(--foreground);
+          color: var(--background);
+        }
+      `}</style>
     </div>
   );
 }

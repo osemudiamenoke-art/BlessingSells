@@ -47,6 +47,14 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
 
         <div className="flex-1 overflow-y-auto py-6 px-6 space-y-6">
           <nav className="flex flex-col space-y-4">
+            {/* Home */}
+            <Link
+              href="/"
+              onClick={onClose}
+              className="text-[15px] font-medium opacity-90 hover:opacity-100 transition-opacity flex items-center gap-2"
+            >
+              🏠 Home
+            </Link>
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat.handle}

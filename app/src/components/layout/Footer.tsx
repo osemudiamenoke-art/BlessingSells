@@ -1,58 +1,25 @@
 import { Link } from "wouter";
-import { Instagram, Facebook, Mail, ArrowRight } from "lucide-react";
+import { Instagram, Facebook, Mail } from "lucide-react";
 
 export function Footer() {
   return (
     <footer
-      className="pt-16 pb-8 px-6 md:px-12"
+      className="pt-8 md:pt-14 pb-6 px-4 md:px-12"
       style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}
     >
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 lg:gap-16 mb-16">
-          {/* Newsletter */}
-          <div className="md:col-span-4 lg:col-span-5 space-y-6">
-            <h2
-              className="text-[32px] md:text-[40px] font-medium leading-[1.1]"
-              style={{ fontFamily: "var(--font-sans)" }}
-            >
-              Shop{" "}
-              <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>
-                With Us
-              </em>
-            </h2>
-            <p className="text-sm max-w-sm" style={{ opacity: 0.8 }}>
-              Subscribe for exclusive offers, new arrivals, and the latest updates.
-            </p>
-            <form className="relative max-w-[320px]">
-              <input
-                type="email"
-                placeholder="Email address"
-                required
-                className="w-full h-10 bg-transparent text-sm outline-none pr-10"
-                style={{
-                  borderBottom: "1px solid rgba(255,255,255,0.3)",
-                  color: "var(--primary-foreground)",
-                }}
-              />
-              <button
-                type="submit"
-                className="absolute right-0 top-1/2 -translate-y-1/2 p-2 transition-opacity hover:opacity-70"
-              >
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
-
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-16 mb-8 md:mb-16">
           {/* Discover */}
-          <div className="md:col-span-3 lg:col-span-2 space-y-4">
+          <div className="space-y-4">
             <h3 className="text-[13px] font-medium tracking-[0.1em] uppercase mb-6">
               Discover
             </h3>
             <ul className="space-y-3">
               {[
                 ["E-Bikes & Scooters", "/collections/electronic-bike"],
-                ["All Collections", "/collections/advance-wallets"],
-                ["New Arrivals", "/"],
+                ["Men's Wallets", "/collections/advance-wallets"],
+                ["Home Appliances", "/collections/home-appliance"],
+                ["All Collections", "/collections/electronic-bike"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link
@@ -68,7 +35,7 @@ export function Footer() {
           </div>
 
           {/* Support */}
-          <div className="md:col-span-3 lg:col-span-2 space-y-4">
+          <div className="space-y-4">
             <h3 className="text-[13px] font-medium tracking-[0.1em] uppercase mb-6">
               Customer Support
             </h3>
@@ -90,8 +57,6 @@ export function Footer() {
               ))}
             </ul>
           </div>
-
-
         </div>
 
         {/* Bottom bar */}

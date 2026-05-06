@@ -11,6 +11,7 @@ import CartPage from "@/pages/CartPage";
 import PolicyPage from "@/pages/PolicyPage";
 import FaqPage from "@/pages/FaqPage";
 import WishlistPage from "@/pages/WishlistPage";
+import ContactPage from "@/pages/ContactPage";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -31,6 +32,7 @@ function AppRouter() {
       <Route path="/search" component={SearchPage} />
       <Route path="/cart" component={CartPage} />
       <Route path="/wishlist" component={WishlistPage} />
+      <Route path="/pages/contact" component={ContactPage} />
       <Route path="/pages/:policy" component={PolicyPage} />
       <Route path="/faq" component={FaqPage} />
       <Route component={NotFound} />
