@@ -50,6 +50,22 @@ export const PRODUCTS_QUERY = `
               }
             }
             availableForSale
+            variants(first: 1) {
+              edges {
+                node {
+                  id
+                  title
+                  price {
+                    amount
+                  }
+                  availableForSale
+                  selectedOptions {
+                    name
+                    value
+                  }
+                }
+              }
+            }
           }
         }
         pageInfo {
@@ -91,6 +107,22 @@ export const NEWEST_PRODUCTS_QUERY = `
             }
           }
           availableForSale
+          variants(first: 1) {
+            edges {
+              node {
+                id
+                title
+                price {
+                  amount
+                }
+                availableForSale
+                selectedOptions {
+                  name
+                  value
+                }
+              }
+            }
+          }
         }
       }
     }
@@ -176,6 +208,22 @@ export const SEARCH_PRODUCTS_QUERY = `
             }
           }
           availableForSale
+          variants(first: 1) {
+            edges {
+              node {
+                id
+                title
+                price {
+                  amount
+                }
+                availableForSale
+                selectedOptions {
+                  name
+                  value
+                }
+              }
+            }
+          }
         }
       }
     }
