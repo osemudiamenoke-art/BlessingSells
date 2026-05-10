@@ -22,8 +22,8 @@ export function AnnouncementBar() {
         }
       `}</style>
       <span className="marquee-track text-[11px] tracking-[0.08em] font-light">
-        Premium Electronics &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; 30-Day Returns &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Secure Checkout &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; E-Bikes &amp; Scooters &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Smart Home Devices &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Trusted Brands &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        Premium Electronics &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; 30-Day Returns &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Secure Checkout &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; E-Bikes &amp; Scooters &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Smart Home Devices &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Trusted Brands &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        E-Bikes &amp; Scooters &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Men's Wallets &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Toilet &amp; Bath &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Pets &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Home Appliances &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Smart Cameras &amp; Door Locks &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Accessories &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; <strong style={{ fontWeight: 600, color: "#ffd700" }}>Smart Intelligence</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        E-Bikes &amp; Scooters &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Men's Wallets &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Toilet &amp; Bath &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Pets &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Home Appliances &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Smart Cameras &amp; Door Locks &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; Accessories &nbsp;&nbsp;&nbsp;·&nbsp;&nbsp;&nbsp; <strong style={{ fontWeight: 600, color: "#ffd700" }}>Smart Intelligence</strong> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
       </span>
     </div>
   );

@@ -158,21 +158,7 @@ export default function HomePage() {
   return (
     <div className="w-full">
 
-      {/* BlessingSells Exclusives header */}
-      <section style={{ padding: "48px 1rem 16px", maxWidth: 1400, margin: "0 auto" }}>
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 10 }}>
-          <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--primary)" }}>
-            Our Collections
-          </span>
-          <MixedHeading className="text-[32px] md:text-[44px]">
-            BlessingSells{" "}
-            <em style={{ fontFamily: "var(--font-serif)", fontWeight: 400 }}>Exclusives</em>
-          </MixedHeading>
-          <p style={{ fontSize: 14, color: "var(--muted-foreground)", maxWidth: 460, lineHeight: 1.6, margin: 0 }}>
-            Browse our most popular categories — quality products curated for your everyday life.
-          </p>
-        </div>
-      </section>
+      {/* Category strips */}
 
       {/* Category strips */}
       {CATEGORIES.map((cat) => (

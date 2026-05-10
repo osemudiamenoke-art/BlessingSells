@@ -3,6 +3,7 @@ import { Search } from "lucide-react";
 import { useState } from "react";
 
 const CATEGORIES = [
+  { label: "All",                        handle: "all" },
   { label: "E-Bikes & Scooters",          handle: "electronic-bike" },
   { label: "Men's Wallets",               handle: "advance-wallets" },
   { label: "Toilet & Bath",              handle: "toilet-bath" },

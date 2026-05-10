@@ -12,6 +12,7 @@ import PolicyPage from "@/pages/PolicyPage";
 import FaqPage from "@/pages/FaqPage";
 import WishlistPage from "@/pages/WishlistPage";
 import ContactPage from "@/pages/ContactPage";
+import PrivacyDemo from "@/pages/PrivacyDemo";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient({
@@ -35,6 +36,7 @@ function AppRouter() {
       <Route path="/pages/contact" component={ContactPage} />
       <Route path="/pages/:policy" component={PolicyPage} />
       <Route path="/faq" component={FaqPage} />
+      <Route path="/privacy-demo" component={PrivacyDemo} />
       <Route component={NotFound} />
     </Switch>
   );

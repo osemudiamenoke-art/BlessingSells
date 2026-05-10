@@ -122,22 +122,18 @@ export function ProductCard({ product }: ProductCardProps) {
               style={{
                 position: "absolute", bottom: "10px", left: "50%",
                 transform: "translateX(-50%)",
-                height: "34px", padding: "0 14px",
-                borderRadius: "9999px",
+                width: "36px", height: "36px",
+                borderRadius: "50%",
                 background: "rgba(255,255,255,0.95)",
-                display: "flex", alignItems: "center", justifyContent: "center", gap: "6px",
+                display: "flex", alignItems: "center", justifyContent: "center",
                 border: "none", cursor: "pointer",
                 boxShadow: "0 2px 8px rgba(0,0,0,0.14)",
-                fontSize: "11px", fontWeight: 600, letterSpacing: "0.1em",
-                textTransform: "uppercase", color: "var(--foreground)",
-                fontFamily: "inherit",
+                color: "var(--foreground)",
                 transition: "opacity 0.2s ease, transform 0.2s ease",
-                whiteSpace: "nowrap",
               }}
               className="quick-view-btn"
             >
-              <Eye style={{ width: "14px", height: "14px", flexShrink: 0 }} strokeWidth={2} />
-              Quick View
+              <Eye style={{ width: "16px", height: "16px" }} strokeWidth={2} />
             </button>
           </div>
 
