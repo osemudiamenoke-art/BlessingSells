@@ -52,10 +52,10 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
           className="text-lg tracking-[0.1em] font-medium uppercase flex items-center gap-1"
           style={{ color: "var(--background)" }}
         >
+          <img src="/logo.png" alt="BlessingSells Logo" className="h-12 w-auto object-contain" />
           <span style={{ color: "var(--background)" }}>
             BLESSINGSELLS
           </span>
-          <img src="/logo.png" alt="BlessingSells Logo" className="h-10 w-auto object-contain" />
         </Link>
       </div>
 
