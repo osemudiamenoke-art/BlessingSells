@@ -33,7 +33,7 @@ export function SecondaryNav() {
   return (
     <div
       style={{
-        background: "var(--primary)",
+        background: "var(--foreground)",
         borderBottom: "none",
       }}
     >
@@ -102,8 +102,8 @@ export function SecondaryNav() {
               style={{
                 width: 44,
                 height: 38,
-                background: "var(--foreground)",
-                color: "var(--background)",
+                background: "var(--primary)",
+                color: "var(--primary-foreground)",
                 borderRadius: "0 4px 4px 0",
                 display: "flex",
                 alignItems: "center",

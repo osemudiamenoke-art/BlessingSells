@@ -65,13 +65,13 @@ function ViewAllCard({ handle, label, img }: { handle: string; label: string; im
           }}>
             <span style={{
               fontSize: 32, lineHeight: 1,
-              color: "var(--foreground)",
+              color: "var(--primary)",
               filter: "drop-shadow(0 1px 2px rgba(255,255,255,0.6))",
             }}>→</span>
             <span style={{
               fontSize: 12, fontWeight: 700,
               letterSpacing: "0.12em", textTransform: "uppercase",
-              color: "var(--foreground)",
+              color: "var(--primary)",
               textShadow: "0 1px 4px rgba(255,255,255,0.7)",
             }}>
               View All

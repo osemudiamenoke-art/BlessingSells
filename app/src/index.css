@@ -86,9 +86,9 @@ body {
 
 /* ── Product card button hovers ─────────────────────────────────── */
 .add-to-cart-btn:not(:disabled):hover {
-  background: var(--foreground) !important;
-  border-color: var(--foreground) !important;
-  color: var(--background) !important;
+  background: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: var(--primary-foreground) !important;
 }
 .wishlist-btn:hover {
   transform: scale(1.12) !important;

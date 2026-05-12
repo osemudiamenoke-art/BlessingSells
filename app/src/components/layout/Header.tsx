@@ -24,7 +24,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
     <header
       style={{
         height: "64px",
-        background: "var(--primary)",
+        background: "var(--foreground)",
         borderBottom: "none",
         position: "sticky",
         top: 0,
@@ -52,8 +52,11 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
           className="text-lg tracking-[0.1em] font-medium uppercase flex items-center gap-2"
           style={{ color: "var(--background)" }}
         >
-          <span style={{ color: "var(--background)" }}>
-            BLESSINGSELLS
+          <span>
+            <span style={{ color: "var(--primary)" }}>B</span>
+            LESSING
+            <span style={{ color: "var(--royal-magenta)" }}>S</span>
+            ELLS
           </span>
           <span
             className="w-1.5 h-1.5 rounded-full"
@@ -62,6 +65,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
         </Link>
       </div>
 
+      {/* Desktop search */}
       <div className="hidden md:flex flex-1 justify-center px-8">
         <form onSubmit={handleSearch} className="w-full max-w-[500px] flex">
           <input
@@ -87,8 +91,8 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
             style={{
               width: "44px",
               height: "40px",
-              background: "var(--foreground)",
-              color: "var(--background)",
+              background: "var(--primary)",
+              color: "var(--primary-foreground)",
               borderRadius: "0 4px 4px 0",
               display: "flex",
               alignItems: "center",

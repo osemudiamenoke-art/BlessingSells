@@ -5,7 +5,7 @@ export function Footer() {
   return (
     <footer
       className="pt-8 md:pt-14 pb-6 px-4 md:px-12"
-      style={{ background: "var(--primary)", color: "var(--primary-foreground)" }}
+      style={{ background: "var(--foreground)", color: "var(--background)" }}
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-16 mb-8 md:mb-16">
