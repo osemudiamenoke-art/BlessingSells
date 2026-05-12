@@ -24,7 +24,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
     <header
       style={{
         height: "64px",
-        background: "var(--foreground)",
+        background: "var(--primary)",
         borderBottom: "none",
         position: "sticky",
         top: 0,
@@ -87,8 +87,8 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
             style={{
               width: "44px",
               height: "40px",
-              background: "var(--primary)",
-              color: "var(--primary-foreground)",
+              background: "var(--foreground)",
+              color: "var(--background)",
               borderRadius: "0 4px 4px 0",
               display: "flex",
               alignItems: "center",
