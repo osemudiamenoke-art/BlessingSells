@@ -150,8 +150,8 @@ export default function ProductPage() {
             by {product.vendor}
           </div>
 
-          <h1 className="text-[28px] md:text-[34px] font-medium leading-[1.2] mb-4">
-            {product.title}
+          <h1 className="text-[28px] md:text-[34px] font-medium leading-[1.2] mb-4 capitalize">
+            {product.title.toLowerCase()}
           </h1>
 
           <div className="flex items-center gap-3 mb-6">

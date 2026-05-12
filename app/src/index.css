@@ -6,14 +6,16 @@
   --font-serif: "Playfair Display", Georgia, serif;
 
   /* ── Colour Tokens ─────────────────────────────────────────── */
-  --background: #f7f5f2;
-  --foreground: #1a1a1a;
-  --card: #efefeb;
-  --border: #e0dbd3;
-  --primary: #2a4234;
-  --primary-foreground: #fff;
-  --muted-foreground: #7a7570;
+  --background: #FAEEF6;
+  --foreground: #6B1A6B;
+  --card: #F4AECF;
+  --border: #D4829A;
+  --primary: #8B2A8B;
+  --primary-foreground: #FAEEF6;
+  --muted-foreground: #C4908A;
   --destructive: #c0392b;
+  --hot-pink: #E87CB5;
+  --rose-gold: #C4908A;
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -50,7 +52,7 @@ body {
   100% { background-position:  200% 0; }
 }
 .skeleton-pulse {
-  background: linear-gradient(90deg, var(--card) 25%, #e8e3dc 50%, var(--card) 75%);
+  background: linear-gradient(90deg, var(--card) 25%, var(--border) 50%, var(--card) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.4s ease-in-out infinite;
   border-radius: 3px;

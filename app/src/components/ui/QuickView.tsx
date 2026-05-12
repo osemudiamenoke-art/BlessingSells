@@ -115,7 +115,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
             gap: 0,
           }} className="qv-grid">
             {/* ── Image panel ── */}
-            <div style={{ background: "#f5f2ee", padding: 16 }}>
+            <div style={{ background: "var(--background)", padding: 16 }}>
               {/* Main image */}
               <div style={{ borderRadius: 12, overflow: "hidden", aspectRatio: "1/1", marginBottom: 10 }}>
                 {images[activeImg] ? (
@@ -140,7 +140,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
                       style={{
                         width: 54, height: 54, borderRadius: 8, overflow: "hidden",
                         border: `2px solid ${i === activeImg ? "var(--primary)" : "transparent"}`,
-                        padding: 0, cursor: "pointer", background: "#ebe8e2",
+                        padding: 0, cursor: "pointer", background: "var(--card)",
                         transition: "border-color 0.15s",
                       }}
                     >
@@ -159,8 +159,8 @@ export function QuickView({ product, onClose }: QuickViewProps) {
               </div>
 
               {/* Title */}
-              <h2 style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.3, margin: 0, color: "var(--foreground)" }}>
-                {product.title}
+              <h2 style={{ fontSize: 18, fontWeight: 500, lineHeight: 1.3, margin: 0, color: "var(--foreground)", textTransform: "capitalize" }}>
+                {product.title.toLowerCase()}
               </h2>
 
               {/* Price */}
@@ -174,7 +174,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
                   </span>
                 )}
                 {hasDiscount && (
-                  <span style={{ fontSize: 11, fontWeight: 600, background: "#e8f5e9", color: "#2e7d32", padding: "2px 8px", borderRadius: 9999 }}>
+                  <span style={{ fontSize: 11, fontWeight: 600, background: "rgba(232, 124, 181, 0.15)", color: "var(--hot-pink)", padding: "2px 8px", borderRadius: 9999 }}>
                     SALE
                   </span>
                 )}
@@ -250,12 +250,12 @@ export function QuickView({ product, onClose }: QuickViewProps) {
                       flex: 1, height: 42, borderRadius: 9999, fontSize: 12, fontWeight: 600,
                       letterSpacing: "0.1em", textTransform: "uppercase",
                       border: "1.5px solid var(--border)", background: "transparent",
-                      color: wishlisted ? "#e05252" : "var(--foreground)",
+                      color: wishlisted ? "var(--hot-pink)" : "var(--foreground)",
                       cursor: "pointer", display: "flex", alignItems: "center", justifyContent: "center", gap: 6,
                       fontFamily: "inherit", transition: "all 0.15s",
                     }}
                   >
-                    <Heart style={{ width: 15, height: 15, fill: wishlisted ? "#e05252" : "none", color: wishlisted ? "#e05252" : "var(--foreground)" }} />
+                    <Heart style={{ width: 15, height: 15, fill: wishlisted ? "var(--hot-pink)" : "none", color: wishlisted ? "var(--hot-pink)" : "var(--foreground)" }} />
                     {wishlisted ? "Saved" : "Wishlist"}
                   </button>
                   <Link
@@ -276,7 +276,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
               </div>
 
               {/* Availability badge */}
-              <div style={{ fontSize: 12, color: product.availableForSale ? "#2e7d32" : "var(--muted-foreground)", fontWeight: 500 }}>
+              <div style={{ fontSize: 12, color: product.availableForSale ? "var(--hot-pink)" : "var(--muted-foreground)", fontWeight: 500 }}>
                 {product.availableForSale ? "✓ In stock" : "✗ Out of stock"}
               </div>
             </div>

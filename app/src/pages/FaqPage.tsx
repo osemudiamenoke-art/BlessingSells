@@ -79,7 +79,7 @@ export default function FaqPage() {
               onClick={() => setOpen(open === idx ? null : idx)}
               className="w-full flex items-center justify-between p-5 text-left transition-colors"
               style={{
-                background: open === idx ? "var(--card)" : "#fff",
+                background: open === idx ? "var(--card)" : "var(--background)",
               }}
             >
               <span className="font-medium text-[15px] pr-4">{faq.q}</span>

@@ -63,7 +63,7 @@ export function ProductCard({ product }: ProductCardProps) {
               borderRadius: "12px",
               overflow: "hidden",
               aspectRatio: "1/1",
-              background: "#f0ede8",
+              background: "var(--background)",
               marginBottom: "12px",
             }}
           >
@@ -110,7 +110,7 @@ export function ProductCard({ product }: ProductCardProps) {
               }}
               className="wishlist-btn"
             >
-              <Heart style={{ width: "17px", height: "17px", color: wishlisted ? "#e05252" : "#888", fill: wishlisted ? "#e05252" : "none", transition: "color 0.2s ease, fill 0.2s ease" }} strokeWidth={2} />
+              <Heart style={{ width: "17px", height: "17px", color: wishlisted ? "var(--hot-pink)" : "#888", fill: wishlisted ? "var(--hot-pink)" : "none", transition: "color 0.2s ease, fill 0.2s ease" }} strokeWidth={2} />
             </button>
 
             {/* ── Bottom-centre: Eye / Quick view ──
@@ -142,8 +142,8 @@ export function ProductCard({ product }: ProductCardProps) {
             <div style={{ fontSize: "10px", letterSpacing: "0.12em", color: "var(--primary)", textTransform: "uppercase", fontWeight: 500, marginBottom: "4px" }}>
               {product.vendor}
             </div>
-            <h3 style={{ fontSize: "13px", lineHeight: 1.4, fontWeight: 400, color: "var(--foreground)", margin: "0 0 8px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
-              {product.title}
+            <h3 style={{ fontSize: "13px", lineHeight: 1.4, fontWeight: 400, color: "var(--foreground)", margin: "0 0 8px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", textTransform: "capitalize" }}>
+              {product.title.toLowerCase()}
             </h3>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
               <span style={{ fontSize: "14px", fontWeight: 500, color: "var(--foreground)" }}>

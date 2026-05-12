@@ -52,10 +52,15 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
           className="text-lg tracking-[0.1em] font-medium uppercase flex items-center gap-2"
           style={{ color: "var(--foreground)" }}
         >
-          BLESSINGSELLS
+          <span>
+            <span style={{ color: "var(--hot-pink)" }}>B</span>
+            LESSING
+            <span style={{ color: "var(--primary)" }}>S</span>
+            ELLS
+          </span>
           <span
             className="w-1.5 h-1.5 rounded-full"
-            style={{ background: "var(--primary)" }}
+            style={{ background: "var(--rose-gold)" }}
           />
         </Link>
       </div>

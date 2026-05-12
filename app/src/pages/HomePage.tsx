@@ -13,6 +13,11 @@ const CATEGORIES = [
   { label: "Home Appliances",            handle: "home-appliance",           img: "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?q=80&w=800&auto=format&fit=crop" },
   { label: "Smart Cameras & Door Locks", handle: "smart-security-camera",    img: "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=800&auto=format&fit=crop" },
   { label: "Accessories",                handle: "cell-phones-accessories",  img: "https://images.unsplash.com/photo-1491553895911-0055eca6402d?q=80&w=800&auto=format&fit=crop" },
+  { label: "Hair & Beauty",              handle: "hair-care",                img: "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=800&auto=format&fit=crop" },
+  { label: "Smart & Fitness Watch",      handle: "watch",                    img: "https://images.unsplash.com/photo-1579586337278-3befd40fd17a?q=80&w=800&auto=format&fit=crop" },
+  { label: "Headphone & Ear Bud",        handle: "smart-earbuds",            img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?q=80&w=800&auto=format&fit=crop" },
+  { label: "Smart Ring",                 handle: "smart-ring",               img: "https://images.unsplash.com/photo-1605100804763-247f67b45456?q=80&w=800&auto=format&fit=crop" },
+  { label: "Baby & Maternity",           handle: "baby-maternity",           img: "https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=800&auto=format&fit=crop" },
 ];
 
 // ── View All placeholder — matches ProductCard size exactly ───────
@@ -36,7 +41,7 @@ function ViewAllCard({ handle, label, img }: { handle: string; label: string; im
           overflow: "hidden",
           aspectRatio: "1/1",
           marginBottom: 12,
-          background: "#f0ede8",
+          background: "transparent",
         }}>
           {/* Blurred background image — less opacity so image shows through */}
           <img

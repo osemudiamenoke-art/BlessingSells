@@ -16,10 +16,12 @@ export function Footer() {
             </h3>
             <ul className="space-y-3">
               {[
+                ["All Collections", "/collections/all"],
                 ["E-Bikes & Scooters", "/collections/electronic-bike"],
                 ["Men's Wallets", "/collections/advance-wallets"],
-                ["Home Appliances", "/collections/home-appliance"],
-                ["All Collections", "/collections/electronic-bike"],
+                ["Hair & Beauty", "/collections/hair-care"],
+                ["Smart & Fitness Watch", "/collections/watch"],
+                ["Baby & Maternity", "/collections/baby-maternity"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link

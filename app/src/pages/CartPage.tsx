@@ -73,7 +73,7 @@ export default function CartPage() {
               style={{
                 border: "1px solid var(--border)",
                 borderRadius: "4px",
-                background: "#fff",
+                background: "var(--background)",
               }}
             >
               <Link href={`/products/${line.merchandise.product.handle}`}>
@@ -106,8 +106,8 @@ export default function CartPage() {
                   {line.merchandise.product.vendor}
                 </div>
                 <Link href={`/products/${line.merchandise.product.handle}`}>
-                  <h3 className="text-[14px] font-normal mb-1">
-                    {line.merchandise.product.title}
+                  <h3 className="text-[14px] font-normal mb-1 capitalize">
+                    {line.merchandise.product.title.toLowerCase()}
                   </h3>
                 </Link>
                 {line.merchandise.title !== "Default Title" && (
@@ -165,7 +165,7 @@ export default function CartPage() {
             style={{
               border: "1px solid var(--border)",
               borderRadius: "4px",
-              background: "#fff",
+              background: "var(--background)",
               position: "sticky",
               top: "80px",
             }}

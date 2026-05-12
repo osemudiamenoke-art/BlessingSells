@@ -54,7 +54,7 @@ export function CartDrawer() {
 
           <div
             className="relative w-full md:w-[420px] h-full shadow-2xl flex flex-col"
-            style={{ background: "#fff" }}
+            style={{ background: "var(--background)" }}
           >
             {/* Header */}
             <div
@@ -151,8 +151,8 @@ export function CartDrawer() {
                             href={`/products/${line.merchandise.product.handle}`}
                             onClick={() => setIsOpen(false)}
                           >
-                            <h3 className="text-[13px] font-normal line-clamp-2" style={{ color: "var(--foreground)" }}>
-                              {line.merchandise.product.title}
+                            <h3 className="text-[13px] font-normal line-clamp-2 capitalize" style={{ color: "var(--foreground)" }}>
+                              {line.merchandise.product.title.toLowerCase()}
                             </h3>
                           </Link>
                           {line.merchandise.title !== "Default Title" && (
@@ -210,7 +210,7 @@ export function CartDrawer() {
                 {/* Footer */}
                 <div
                   className="p-6 space-y-4"
-                  style={{ borderTop: "1px solid var(--border)", background: "#fff" }}
+                  style={{ borderTop: "1px solid var(--border)", background: "var(--background)" }}
                 >
                   <div className="flex items-center justify-between font-medium">
                     <span>Subtotal</span>

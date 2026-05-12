@@ -15,6 +15,11 @@ const CATEGORIES = [
   { label: "Home Appliances", handle: "home-appliance" },
   { label: "Smart Cameras & Door Locks", handle: "smart-security-camera" },
   { label: "Cell Phones & Accessories", handle: "cell-phones-accessories" },
+  { label: "Hair & Beauty", handle: "hair-care" },
+  { label: "Smart & Fitness Watch", handle: "watch" },
+  { label: "Headphone & Ear Bud", handle: "smart-earbuds" },
+  { label: "Smart Ring", handle: "smart-ring" },
+  { label: "Baby & Maternity", handle: "baby-maternity" },
 ];
 
 export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {

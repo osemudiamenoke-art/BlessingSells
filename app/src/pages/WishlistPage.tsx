@@ -90,7 +90,7 @@ export default function WishlistPage() {
               width: "80px",
               height: "80px",
               borderRadius: "50%",
-              background: "#f0ede8",
+              background: "var(--background)",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -98,7 +98,7 @@ export default function WishlistPage() {
             }}
           >
             <Heart
-              style={{ width: "36px", height: "36px", color: "#c9b8a8" }}
+              style={{ width: "36px", height: "36px", color: "var(--muted-foreground)" }}
               strokeWidth={1.5}
             />
           </div>
@@ -179,7 +179,7 @@ export default function WishlistPage() {
                         borderRadius: "12px",
                         overflow: "hidden",
                         aspectRatio: "1/1",
-                        background: "#f0ede8",
+                        background: "var(--background)",
                         marginBottom: "12px",
                       }}
                     >
@@ -239,8 +239,8 @@ export default function WishlistPage() {
                           style={{
                             width: "17px",
                             height: "17px",
-                            color: "#e05252",
-                            fill: "#e05252",
+                            color: "var(--hot-pink)",
+                            fill: "var(--hot-pink)",
                           }}
                           strokeWidth={2}
                         />
