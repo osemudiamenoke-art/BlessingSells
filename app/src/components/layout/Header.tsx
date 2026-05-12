@@ -49,19 +49,13 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
       <div className="flex-1 md:flex-none flex justify-center md:justify-start">
         <Link
           href="/"
-          className="text-lg tracking-[0.1em] font-medium uppercase flex items-center gap-2"
+          className="text-lg tracking-[0.1em] font-medium uppercase flex items-center gap-1"
           style={{ color: "var(--background)" }}
         >
-          <span>
-            <span style={{ color: "var(--primary)" }}>B</span>
-            LESSING
-            <span style={{ color: "var(--royal-magenta)" }}>S</span>
-            ELLS
+          <span style={{ color: "var(--background)" }}>
+            BLESSINGSELLS
           </span>
-          <span
-            className="w-1.5 h-1.5 rounded-full"
-            style={{ background: "var(--rose-gold)" }}
-          />
+          <img src="/logo.png" alt="BlessingSells Logo" className="h-10 w-auto object-contain" />
         </Link>
       </div>
 

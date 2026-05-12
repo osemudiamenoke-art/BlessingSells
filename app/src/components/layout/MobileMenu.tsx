@@ -35,8 +35,8 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
       <div
         className="relative w-full max-w-[85vw] h-full flex flex-col shadow-2xl"
         style={{
-          background: "var(--primary)",
-          color: "var(--primary-foreground)",
+          background: "var(--foreground)",
+          color: "var(--background)",
         }}
       >
         <div
