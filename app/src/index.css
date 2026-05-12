@@ -6,15 +6,15 @@
   --font-serif: "Playfair Display", Georgia, serif;
 
   /* ── Colour Tokens ─────────────────────────────────────────── */
-  --background: #FAEEF6;
+  --background: #FFFFFF;
   --foreground: #6B1A6B;
-  --card: #F4AECF;
+  --card: #FFFFFF;
   --border: #D4829A;
-  --primary: #8B2A8B;
+  --primary: #E87CB5;
   --primary-foreground: #FAEEF6;
   --muted-foreground: #C4908A;
   --destructive: #c0392b;
-  --hot-pink: #E87CB5;
+  --royal-magenta: #8B2A8B;
   --rose-gold: #C4908A;
 }
 
@@ -34,7 +34,7 @@ body {
 
 /* ── Tailwind layer overrides ───────────────────────────────────── */
 @layer base {
-  h1, h2, h3, h4, h5, h6 { font-weight: 500; line-height: 1.2; }
+  h1, h2, h3, h4, h5, h6 { font-weight: 500; line-height: 1.2; color: var(--royal-magenta); }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
   button { cursor: pointer; border: none; background: none; font-family: inherit; }
@@ -87,6 +87,7 @@ body {
 /* ── Product card button hovers ─────────────────────────────────── */
 .add-to-cart-btn:not(:disabled):hover {
   background: var(--foreground) !important;
+  border-color: var(--foreground) !important;
   color: var(--background) !important;
 }
 .wishlist-btn:hover {

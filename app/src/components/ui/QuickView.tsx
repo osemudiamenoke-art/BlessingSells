@@ -154,7 +154,7 @@ export function QuickView({ product, onClose }: QuickViewProps) {
             {/* ── Info panel ── */}
             <div style={{ padding: "24px 24px 24px 20px", display: "flex", flexDirection: "column", gap: 16 }}>
               {/* Vendor */}
-              <div style={{ fontSize: 10, letterSpacing: "0.12em", color: "var(--primary)", textTransform: "uppercase", fontWeight: 600 }}>
+              <div style={{ fontSize: 10, letterSpacing: "0.12em", color: "var(--rose-gold)", textTransform: "uppercase", fontWeight: 600 }}>
                 {product.vendor}
               </div>
 
@@ -230,8 +230,8 @@ export function QuickView({ product, onClose }: QuickViewProps) {
                   style={{
                     height: 46, borderRadius: 9999, fontSize: 12, fontWeight: 700,
                     letterSpacing: "0.14em", textTransform: "uppercase",
-                    background: product.availableForSale ? "var(--foreground)" : "var(--border)",
-                    color: product.availableForSale ? "var(--background)" : "var(--muted-foreground)",
+                    background: product.availableForSale ? "var(--primary)" : "var(--border)",
+                    color: product.availableForSale ? "var(--primary-foreground)" : "var(--muted-foreground)",
                     border: "none", cursor: product.availableForSale ? "pointer" : "not-allowed",
                     display: "flex", alignItems: "center", justifyContent: "center", gap: 8,
                     fontFamily: "inherit", transition: "opacity 0.2s",

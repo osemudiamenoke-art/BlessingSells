@@ -52,11 +52,8 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
           className="text-lg tracking-[0.1em] font-medium uppercase flex items-center gap-2"
           style={{ color: "var(--foreground)" }}
         >
-          <span>
-            <span style={{ color: "var(--hot-pink)" }}>B</span>
-            LESSING
-            <span style={{ color: "var(--primary)" }}>S</span>
-            ELLS
+          <span style={{ color: "#000000" }}>
+            BLESSINGSELLS
           </span>
           <span
             className="w-1.5 h-1.5 rounded-full"
@@ -107,7 +104,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
           {wishlistCount > 0 && (
             <span
               className="absolute -top-0 -right-0 w-4 h-4 text-[9px] font-medium flex items-center justify-center rounded-full"
-              style={{ background: "var(--foreground)", color: "var(--background)" }}
+              style={{ background: "var(--royal-magenta)", color: "var(--background)" }}
             >
               {wishlistCount}
             </span>
@@ -133,7 +130,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
             <span
               className="absolute -top-0 -right-0 w-4 h-4 text-[9px] font-medium flex items-center justify-center rounded-full"
               style={{
-                background: "var(--foreground)",
+                background: "var(--royal-magenta)",
                 color: "var(--background)",
               }}
             >

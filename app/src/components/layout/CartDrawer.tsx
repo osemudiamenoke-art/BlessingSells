@@ -143,7 +143,7 @@ export function CartDrawer() {
                         <div>
                           <div
                             className="text-[10px] tracking-[0.12em] font-medium uppercase mb-1"
-                            style={{ color: "var(--primary)" }}
+                            style={{ color: "var(--rose-gold)" }}
                           >
                             {line.merchandise.product.vendor}
                           </div>

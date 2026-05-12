@@ -2,8 +2,8 @@ export function AnnouncementBar() {
   return (
     <div
       style={{
-        background: "var(--primary)",
-        color: "var(--primary-foreground)",
+        background: "var(--foreground)",
+        color: "var(--background)",
         height: "32px",
         overflow: "hidden",
         whiteSpace: "nowrap",

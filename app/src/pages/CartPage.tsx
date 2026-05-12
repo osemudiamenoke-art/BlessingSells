@@ -101,7 +101,7 @@ export default function CartPage() {
               <div className="flex-1">
                 <div
                   className="text-[10px] tracking-wider uppercase font-medium mb-1"
-                  style={{ color: "var(--primary)" }}
+                  style={{ color: "var(--rose-gold)" }}
                 >
                   {line.merchandise.product.vendor}
                 </div>

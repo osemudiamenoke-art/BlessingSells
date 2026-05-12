@@ -145,7 +145,7 @@ export default function ProductPage() {
         <div className="flex flex-col">
           <div
             className="text-[12px] tracking-[0.15em] uppercase font-medium mb-2"
-            style={{ color: "var(--primary)" }}
+            style={{ color: "var(--rose-gold)" }}
           >
             by {product.vendor}
           </div>

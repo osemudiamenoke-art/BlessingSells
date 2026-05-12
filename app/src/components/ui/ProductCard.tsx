@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { Link } from "wouter";
-import { Heart, Eye } from "lucide-react";
+import { Heart } from "lucide-react";
 import type { Product } from "@/types/shopify";
 import { formatPrice } from "@/lib/utils";
 import { useCart } from "@/context/CartContext";
 import { useWishlist } from "@/context/WishlistContext";
-import { QuickView } from "./QuickView";
 
 interface ProductCardProps {
   product: Product;
@@ -14,7 +13,7 @@ interface ProductCardProps {
 export function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
   const { toggleWishlist, isInWishlist } = useWishlist();
-  const [quickViewOpen, setQuickViewOpen] = useState(false);
+
 
   const firstImage = product.images?.edges[0]?.node;
   const firstVariant = product.variants?.edges[0]?.node;
@@ -35,12 +34,6 @@ export function ProductCard({ product }: ProductCardProps) {
     e.preventDefault();
     e.stopPropagation();
     toggleWishlist(product);
-  };
-
-  const handleQuickView = (e: React.MouseEvent) => {
-    e.preventDefault();
-    e.stopPropagation();
-    setQuickViewOpen(true);
   };
 
   return (
@@ -64,6 +57,7 @@ export function ProductCard({ product }: ProductCardProps) {
               overflow: "hidden",
               aspectRatio: "1/1",
               background: "var(--background)",
+              border: "1px solid rgba(0,0,0,0.06)",
               marginBottom: "12px",
             }}
           >
@@ -113,36 +107,15 @@ export function ProductCard({ product }: ProductCardProps) {
               <Heart style={{ width: "17px", height: "17px", color: wishlisted ? "var(--hot-pink)" : "#888", fill: wishlisted ? "var(--hot-pink)" : "none", transition: "color 0.2s ease, fill 0.2s ease" }} strokeWidth={2} />
             </button>
 
-            {/* ── Bottom-centre: Eye / Quick view ──
-                Always visible on mobile (md:opacity-0 + group-hover:opacity-100) */}
-            <button
-              id={`quickview-${product.id}`}
-              onClick={handleQuickView}
-              aria-label="Quick view product"
-              style={{
-                position: "absolute", bottom: "10px", left: "50%",
-                transform: "translateX(-50%)",
-                width: "36px", height: "36px",
-                borderRadius: "50%",
-                background: "rgba(255,255,255,0.95)",
-                display: "flex", alignItems: "center", justifyContent: "center",
-                border: "none", cursor: "pointer",
-                boxShadow: "0 2px 8px rgba(0,0,0,0.14)",
-                color: "var(--foreground)",
-                transition: "opacity 0.2s ease, transform 0.2s ease",
-              }}
-              className="quick-view-btn"
-            >
-              <Eye style={{ width: "16px", height: "16px" }} strokeWidth={2} />
-            </button>
+
           </div>
 
           {/* Product info */}
           <div style={{ padding: "0 4px" }}>
-            <div style={{ fontSize: "10px", letterSpacing: "0.12em", color: "var(--primary)", textTransform: "uppercase", fontWeight: 500, marginBottom: "4px" }}>
+            <div style={{ fontSize: "10px", letterSpacing: "0.12em", color: "var(--rose-gold)", textTransform: "uppercase", fontWeight: 500, marginBottom: "4px" }}>
               {product.vendor}
             </div>
-            <h3 style={{ fontSize: "13px", lineHeight: 1.4, fontWeight: 400, color: "var(--foreground)", margin: "0 0 8px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", textTransform: "capitalize" }}>
+            <h3 style={{ fontSize: "13px", lineHeight: 1.4, fontWeight: 400, color: "#000000", margin: "0 0 8px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", textTransform: "capitalize" }}>
               {product.title.toLowerCase()}
             </h3>
             <div style={{ display: "flex", alignItems: "center", gap: "8px", marginBottom: "12px" }}>
@@ -179,31 +152,6 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
 
-      {/* Quick View modal portal */}
-      {quickViewOpen && (
-        <QuickView product={product} onClose={() => setQuickViewOpen(false)} />
-      )}
-
-      <style>{`
-        /* Desktop: hide eye btn until hover */
-        @media (min-width: 768px) {
-          .quick-view-btn {
-            opacity: 0;
-            transform: translateX(-50%) translateY(4px);
-          }
-          .group:hover .quick-view-btn {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
-          }
-        }
-        /* Mobile: always visible */
-        @media (max-width: 767px) {
-          .quick-view-btn {
-            opacity: 1 !important;
-            transform: translateX(-50%) !important;
-          }
-        }
-      `}</style>
     </>
   );
 }

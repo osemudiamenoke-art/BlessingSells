@@ -46,7 +46,7 @@ export function ContactPage() {
     <div style={{ maxWidth: 1400, margin: "0 auto", padding: "4rem 1.5rem 6rem" }}>
       {/* Page heading */}
       <div style={{ textAlign: "center", marginBottom: "3.5rem" }}>
-        <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--primary)" }}>
+        <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: "0.18em", textTransform: "uppercase", color: "var(--rose-gold)" }}>
           Get In Touch
         </span>
         <h1 style={{ fontSize: "clamp(30px,5vw,48px)", fontWeight: 500, margin: "12px 0 0" }}>

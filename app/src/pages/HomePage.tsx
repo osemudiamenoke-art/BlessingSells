@@ -42,6 +42,7 @@ function ViewAllCard({ handle, label, img }: { handle: string; label: string; im
           aspectRatio: "1/1",
           marginBottom: 12,
           background: "transparent",
+          border: "1px solid rgba(0,0,0,0.06)",
         }}>
           {/* Blurred background image — less opacity so image shows through */}
           <img
@@ -80,7 +81,7 @@ function ViewAllCard({ handle, label, img }: { handle: string; label: string; im
 
         {/* Info area — matches ProductCard layout */}
         <div style={{ padding: "0 4px" }}>
-          <div style={{ fontSize: 10, letterSpacing: "0.12em", color: "var(--primary)", textTransform: "uppercase", fontWeight: 500, marginBottom: 4 }}>
+          <div style={{ fontSize: 10, letterSpacing: "0.12em", color: "var(--rose-gold)", textTransform: "uppercase", fontWeight: 500, marginBottom: 4 }}>
             Collection
           </div>
           <p style={{ fontSize: 13, lineHeight: 1.4, fontWeight: 400, color: "var(--foreground)", margin: "0 0 8px" }}>
@@ -175,8 +176,8 @@ export default function HomePage() {
           box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
         .view-all-card:hover .view-all-inner-btn {
-          background: var(--foreground);
-          color: var(--background);
+          background: var(--primary);
+          color: var(--primary-foreground);
         }
       `}</style>
     </div>
