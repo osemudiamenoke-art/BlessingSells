@@ -49,7 +49,7 @@ export function Header({ onMenuClick }: { onMenuClick: () => void }) {
       <div className="flex-1 md:flex-none flex justify-center md:justify-start">
         <Link
           href="/"
-          className="text-lg tracking-[0.1em] font-medium uppercase flex items-center gap-1"
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 md:static md:translate-x-0 md:translate-y-0 text-lg tracking-[0.1em] font-medium uppercase flex items-center gap-1"
           style={{ color: "var(--background)" }}
         >
           <img src="/logo.png" alt="BlessingSells Logo" className="h-12 w-auto object-contain" />
