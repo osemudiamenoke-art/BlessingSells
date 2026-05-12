@@ -33,8 +33,8 @@ export function SecondaryNav() {
   return (
     <div
       style={{
-        background: "var(--background)",
-        borderBottom: "1px solid var(--border)",
+        background: "var(--foreground)",
+        borderBottom: "none",
       }}
     >
       {/* ── Desktop: category links ── */}
@@ -53,7 +53,7 @@ export function SecondaryNav() {
                   href={`/collections/${cat.handle}`}
                   className="text-sm font-normal whitespace-nowrap block py-2 transition-colors"
                   style={{
-                    color: "var(--foreground)",
+                    color: "var(--background)",
                     borderBottom: "2px solid transparent",
                   }}
                   onMouseEnter={(e) =>
@@ -62,7 +62,7 @@ export function SecondaryNav() {
                   }
                   onMouseLeave={(e) =>
                     ((e.currentTarget as HTMLAnchorElement).style.color =
-                      "var(--foreground)")
+                      "var(--background)")
                   }
                 >
                   {cat.label}
@@ -77,38 +77,43 @@ export function SecondaryNav() {
       <div className="md:hidden">
         {/* Search Bar */}
         <div className="px-4 py-2">
-          <form onSubmit={handleSearch} style={{ position: "relative" }}>
-            <Search
-              style={{
-                position: "absolute", left: 12, top: "50%",
-                transform: "translateY(-50%)",
-                width: 16, height: 16,
-                color: "var(--muted-foreground)",
-                pointerEvents: "none",
-              }}
-            />
+          <form onSubmit={handleSearch} className="flex w-full">
             <input
               type="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search products..."
               style={{
-                width: "100%",
+                flex: 1,
                 height: 38,
-                paddingLeft: 36,
+                paddingLeft: 12,
                 paddingRight: 12,
-                borderRadius: 9999,
-                border: "1.5px solid var(--border)",
-                background: "var(--card)",
+                borderRadius: "4px 0 0 4px",
+                border: "none",
+                background: "var(--background)",
                 fontSize: 13,
-                color: "var(--foreground)",
+                color: "#000000",
                 fontFamily: "inherit",
                 outline: "none",
-                transition: "border-color 0.2s",
               }}
-              onFocus={(e) => (e.currentTarget.style.borderColor = "var(--foreground)")}
-              onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
             />
+            <button
+              type="submit"
+              style={{
+                width: 44,
+                height: 38,
+                background: "var(--primary)",
+                color: "var(--primary-foreground)",
+                borderRadius: "0 4px 4px 0",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                border: "none",
+                cursor: "pointer"
+              }}
+            >
+              <Search className="w-5 h-5" />
+            </button>
           </form>
         </div>
 
@@ -128,9 +133,9 @@ export function SecondaryNav() {
                     href={`/collections/${cat.handle}`}
                     className="text-[13px] font-medium whitespace-nowrap block px-3 py-1.5 transition-colors"
                     style={{
-                      color: "var(--foreground)",
-                      background: "var(--card)",
-                      border: "1px solid var(--border)",
+                      color: "var(--background)",
+                      background: "transparent",
+                      border: "1px solid var(--background)",
                       borderRadius: "9999px",
                     }}
                   >
