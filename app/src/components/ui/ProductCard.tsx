@@ -112,7 +112,7 @@ export function ProductCard({ product }: ProductCardProps) {
 
           {/* Product info */}
           <div style={{ padding: "0 4px" }}>
-            <div style={{ fontSize: "10px", letterSpacing: "0.12em", color: "var(--rose-gold)", textTransform: "uppercase", fontWeight: 500, marginBottom: "4px" }}>
+            <div style={{ fontSize: "10px", letterSpacing: "0.12em", color: "#000000", textTransform: "uppercase", fontWeight: 500, marginBottom: "4px" }}>
               {product.vendor}
             </div>
             <h3 style={{ fontSize: "13px", lineHeight: 1.4, fontWeight: 400, color: "#000000", margin: "0 0 8px", display: "-webkit-box", WebkitLineClamp: 2, WebkitBoxOrient: "vertical", overflow: "hidden", textTransform: "capitalize" }}>

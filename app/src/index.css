@@ -34,7 +34,7 @@ body {
 
 /* ── Tailwind layer overrides ───────────────────────────────────── */
 @layer base {
-  h1, h2, h3, h4, h5, h6 { font-weight: 500; line-height: 1.2; color: var(--royal-magenta); }
+  h1, h2, h3, h4, h5, h6 { font-weight: 500; line-height: 1.2; color: #000000; }
   a { color: inherit; text-decoration: none; }
   img { display: block; max-width: 100%; }
   button { cursor: pointer; border: none; background: none; font-family: inherit; }

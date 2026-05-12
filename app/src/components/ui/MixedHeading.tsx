@@ -10,7 +10,7 @@ export function MixedHeading({ children, className }: MixedHeadingProps) {
   return (
     <h2
       className={cn(
-        "font-sans font-medium text-[var(--royal-magenta)] leading-[1.1]",
+        "font-sans font-medium text-[#000000] leading-[1.1]",
         className
       )}
     >
