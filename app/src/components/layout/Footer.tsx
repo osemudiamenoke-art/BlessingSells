@@ -46,6 +46,9 @@ export function Footer() {
                 ["Delivery & Returns", "/pages/shipping-policy"],
                 ["Contact Us", "/pages/contact"],
                 ["FAQs", "/faq"],
+                ["Terms of Service", "/pages/terms-of-service"],
+                ["Refund Policy", "/pages/refund-policy"],
+                ["Privacy Policy", "/pages/privacy-policy"],
               ].map(([label, href]) => (
                 <li key={href}>
                   <Link
