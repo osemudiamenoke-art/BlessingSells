@@ -8,7 +8,30 @@ export function Footer() {
       style={{ background: "var(--foreground)", color: "var(--background)" }}
     >
       <div className="max-w-[1400px] mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-2 gap-6 md:gap-16 mb-8 md:mb-16">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-6 md:gap-16 mb-8 md:mb-16">
+          {/* Company Info */}
+          <div className="space-y-4">
+            <h3 className="text-[13px] font-medium tracking-[0.1em] uppercase mb-6">
+              Company Info
+            </h3>
+            <ul className="space-y-3">
+              {[
+                ["About BlessingSells", "/pages/about"],
+                ["Contact Us", "/pages/contact"],
+              ].map(([label, href]) => (
+                <li key={href}>
+                  <Link
+                    href={href}
+                    className="text-[13px] font-light block py-0.5 transition-opacity hover:opacity-100"
+                    style={{ opacity: 0.8 }}
+                  >
+                    {label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Discover */}
           <div className="space-y-4">
             <h3 className="text-[13px] font-medium tracking-[0.1em] uppercase mb-6">
@@ -44,7 +67,6 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 ["Delivery & Returns", "/pages/shipping-policy"],
-                ["Contact Us", "/pages/contact"],
                 ["FAQs", "/faq"],
                 ["Terms of Service", "/pages/terms-of-service"],
                 ["Refund Policy", "/pages/refund-policy"],
