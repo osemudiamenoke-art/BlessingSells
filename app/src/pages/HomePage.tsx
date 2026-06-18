@@ -20,31 +20,23 @@ const CATEGORIES = [
   { label: "Baby & Maternity",           handle: "baby-maternity",           img: "https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=800&auto=format&fit=crop" },
 ];
 
-// ── View All placeholder — matches ProductCard size exactly ───────
+// ── View All placeholder — full-bleed clear image with floating badge ──
 function ViewAllCard({ handle, label, img }: { handle: string; label: string; img: string }) {
   return (
     <Link href={`/collections/${handle}`} style={{ textDecoration: "none", display: "block" }}>
-      {/* Outer wrapper matches ProductCard: rounded-16 card bg with 12px padding */}
       <div style={{
-        background: "var(--card)",
         borderRadius: 16,
         overflow: "hidden",
-        padding: 12,
-        border: "1.5px dashed var(--border)",
-        transition: "box-shadow 0.2s",
         cursor: "pointer",
+        transition: "box-shadow 0.25s, transform 0.25s",
+        position: "relative",
       }} className="view-all-card">
-        {/* Image area — matches ProductCard's 1:1 image container */}
+        {/* Full-coverage clear image */}
         <div style={{
           position: "relative",
-          borderRadius: 12,
           overflow: "hidden",
-          aspectRatio: "1/1",
-          marginBottom: 12,
-          background: "transparent",
-          border: "1px solid rgba(0,0,0,0.06)",
+          aspectRatio: "3/4",
         }}>
-          {/* Blurred background image — less opacity so image shows through */}
           <img
             src={img}
             alt={label}
@@ -52,50 +44,41 @@ function ViewAllCard({ handle, label, img }: { handle: string; label: string; im
               position: "absolute", inset: 0,
               width: "100%", height: "100%",
               objectFit: "cover",
-              opacity: 0.35,
-              filter: "blur(1.5px)",
+              transition: "transform 0.5s ease",
             }}
+            className="view-all-img"
+            loading="lazy"
           />
-          {/* Overlay text centred */}
+          {/* Subtle gradient at the bottom for text contrast */}
           <div style={{
             position: "absolute", inset: 0,
-            display: "flex", flexDirection: "column",
-            alignItems: "center", justifyContent: "center",
-            gap: 8,
+            background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.05) 40%, transparent 60%)",
+            pointerEvents: "none",
+          }} />
+          {/* "View All" badge — positioned lower on the image */}
+          <div style={{
+            position: "absolute",
+            bottom: "12px",
+            left: "12px",
+            right: "12px",
+            display: "flex",
+            justifyContent: "center",
           }}>
             <span style={{
-              fontSize: 32, lineHeight: 1,
-              color: "var(--primary)",
-              filter: "drop-shadow(0 1px 2px rgba(255,255,255,0.6))",
-            }}>→</span>
-            <span style={{
-              fontSize: 12, fontWeight: 700,
-              letterSpacing: "0.12em", textTransform: "uppercase",
-              color: "var(--primary)",
-              textShadow: "0 1px 4px rgba(255,255,255,0.7)",
-            }}>
-              View All
+              width: "100%", height: "40px",
+              display: "flex", alignItems: "center", justifyContent: "center",
+              background: "rgba(0,0,0,0.35)",
+              backdropFilter: "blur(6px)",
+              border: "1.5px solid rgba(255,255,255,0.6)",
+              borderRadius: "9999px",
+              fontSize: "10px", fontWeight: 600, letterSpacing: "0.14em",
+              textTransform: "uppercase", color: "#fff",
+              textShadow: "0 1px 4px rgba(0,0,0,0.5)",
+              transition: "background 0.2s, transform 0.2s",
+              whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", padding: "0 8px"
+            }} className="view-all-badge">
+              View All / {label}
             </span>
-          </div>
-        </div>
-
-        {/* Info area — matches ProductCard layout */}
-        <div style={{ padding: "0 4px" }}>
-          <div style={{ fontSize: 10, letterSpacing: "0.12em", color: "var(--rose-gold)", textTransform: "uppercase", fontWeight: 500, marginBottom: 4 }}>
-            Collection
-          </div>
-          <p style={{ fontSize: 13, lineHeight: 1.4, fontWeight: 400, color: "var(--foreground)", margin: "0 0 8px" }}>
-            {label}
-          </p>
-          <div style={{
-            height: 40, borderRadius: 9999,
-            border: "1.5px solid var(--foreground)",
-            display: "flex", alignItems: "center", justifyContent: "center",
-            fontSize: 11, fontWeight: 600, letterSpacing: "0.14em",
-            textTransform: "uppercase", color: "var(--foreground)",
-            transition: "background 0.2s, color 0.2s",
-          }} className="view-all-inner-btn">
-            See All Products
           </div>
         </div>
       </div>
@@ -105,7 +88,7 @@ function ViewAllCard({ handle, label, img }: { handle: string; label: string; im
 
 // ── One collection strip ──────────────────────────────────────────
 function CollectionStrip({ label, handle, img }: { label: string; handle: string; img: string }) {
-  const { data: products, isLoading } = useCollectionProducts(handle, 3, "BEST_SELLING");
+  const { data: products, isLoading } = useCollectionProducts(handle, 4, "BEST_SELLING");
 
   return (
     <section style={{ padding: "40px 0", borderBottom: "1px solid var(--border)" }}>
@@ -132,10 +115,10 @@ function CollectionStrip({ label, handle, img }: { label: string; handle: string
           </Link>
         </div>
 
-        {/* Products + View All card in a 2-col (mobile) / 4-col (desktop) grid — matching collection page */}
+        {/* Products + View All card in a 2-col (mobile) / 5-col (desktop) grid */}
         {isLoading ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {[1, 2, 3, 4].map((i) => (
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5">
+            {[1, 2, 3, 4, 5].map((i) => (
               <div key={i} style={{ display: "flex", flexDirection: "column", gap: 8 }}>
                 <Skeleton className="w-full" style={{ aspectRatio: "1/1", borderRadius: 16 }} />
                 <Skeleton className="h-3 w-1/3" />
@@ -144,8 +127,8 @@ function CollectionStrip({ label, handle, img }: { label: string; handle: string
             ))}
           </div>
         ) : products && products.length > 0 ? (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            {products.slice(0, 3).map((p: Product) => (
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-4 md:gap-5">
+            {products.slice(0, 4).map((p: Product) => (
               <ProductCard key={p.id} product={p} />
             ))}
             <ViewAllCard handle={handle} label={label} img={img} />
@@ -173,11 +156,16 @@ export default function HomePage() {
 
       <style>{`
         .view-all-card:hover {
-          box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+          box-shadow: 0 8px 32px rgba(0,0,0,0.15);
+          transform: translateY(-2px);
         }
-        .view-all-card:hover .view-all-inner-btn {
-          background: var(--primary);
-          color: var(--primary-foreground);
+        .view-all-card:hover .view-all-img {
+          transform: scale(1.06);
+        }
+        .view-all-card:hover .view-all-badge {
+          background: rgba(232,124,181,0.75) !important;
+          border-color: rgba(255,255,255,0.6) !important;
+          transform: scale(1.05);
         }
       `}</style>
     </div>
