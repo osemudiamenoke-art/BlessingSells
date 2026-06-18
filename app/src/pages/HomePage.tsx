@@ -55,28 +55,23 @@ function ViewAllCard({ handle, label, img }: { handle: string; label: string; im
             background: "linear-gradient(to top, rgba(0,0,0,0.45) 0%, rgba(0,0,0,0.05) 40%, transparent 60%)",
             pointerEvents: "none",
           }} />
-          {/* "View All" badge — positioned lower on the image */}
+          {/* "View All" text — positioned neatly on the image */}
           <div style={{
             position: "absolute",
-            bottom: "12px",
-            left: "12px",
-            right: "12px",
+            bottom: "24px",
+            left: "16px",
+            right: "16px",
             display: "flex",
             justifyContent: "center",
+            textAlign: "center"
           }}>
             <span style={{
-              width: "100%", height: "40px",
-              display: "flex", alignItems: "center", justifyContent: "center",
-              background: "rgba(0,0,0,0.35)",
-              backdropFilter: "blur(6px)",
-              border: "1.5px solid rgba(255,255,255,0.6)",
-              borderRadius: "9999px",
-              fontSize: "10px", fontWeight: 600, letterSpacing: "0.14em",
+              fontSize: "13px", fontWeight: 700, letterSpacing: "0.12em",
               textTransform: "uppercase", color: "#fff",
-              textShadow: "0 1px 4px rgba(0,0,0,0.5)",
-              transition: "background 0.2s, transform 0.2s",
-              whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", padding: "0 8px"
-            }} className="view-all-badge">
+              lineHeight: 1.4,
+              textShadow: "0 2px 12px rgba(0,0,0,0.9), 0 1px 4px rgba(0,0,0,0.6)",
+              transition: "transform 0.25s, color 0.25s",
+            }} className="view-all-text">
               View All / {label}
             </span>
           </div>
@@ -162,9 +157,8 @@ export default function HomePage() {
         .view-all-card:hover .view-all-img {
           transform: scale(1.06);
         }
-        .view-all-card:hover .view-all-badge {
-          background: rgba(232,124,181,0.75) !important;
-          border-color: rgba(255,255,255,0.6) !important;
+        .view-all-card:hover .view-all-text {
+          color: var(--primary);
           transform: scale(1.05);
         }
       `}</style>
